@@ -5,25 +5,25 @@ import initialState from "./initialState";
 export default produce((draft = initialState, action) => {
     switch(action.type){
         case types.SET_CONFIGURATION:
-            draft.configuration = action.value;
+            draft.configuration = action.config;
             return draft
         case types.SET_QUESTION_SETS:
-            draft.questionSets = action.value;
+            draft.questionSets = action.sets;
             return draft;
         case types.SET_SELECTED_QUESTION_SET:
-            draft.selectedQuestionSet = action.value;
+            draft.selectedQuestionSet = action.set;
             return draft;
         case types.SET_IS_IN_PROGRESS:
-            draft.isInProgress = action.value;
+            draft.isInProgress = action.status;
             return draft;
         case types.SET_QUIZ_COMPLETED:
-            draft.quizComplete = action.value;
+            draft.quizComplete = action.status;
             return draft;
         case types.SET_IS_PAUSED:
-            draft.isPaused = action.value;
+            draft.isPaused = action.status;
             return draft;
         case types.SET_LATEST_SCORE:
-            draft.latestScore = action.value;
+            draft.latestScore = action.score;
             return draft;
         default:
             return draft

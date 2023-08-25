@@ -6,6 +6,7 @@ export function setConfiguration(config) {
 }
 
 export function setQuestionSets(sets){
+    console.log(sets);
     return {type: types.SET_QUESTION_SETS, sets};
 }
 
@@ -33,6 +34,7 @@ export function loadConfiguration() {
     return function (dispatch) {
         return new Promise((resolve) =>  {
             dispatch(setConfiguration(configuration));
+            dispatch(setQuestionSets(configuration.questionSets));
             resolve();
         })
     };
