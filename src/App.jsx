@@ -1,24 +1,27 @@
-import { useState } from 'react'
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Play from "./pages/Play";
+import Summary from "./pages/Summary";
+import Leaderboards from "./pages/Leaderboards";
+import Header from "./components/Header";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
     <>
-      <h1 className="text-4xl mb-4" >Vite + React</h1>
-      <div className="card">
-        <button className="bg-primary p-4" onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+    <div className="bg-background">
+      <Header />
+      <div className="app-container container mx-auto px-4 lg:px-0 mb-4">
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/play" element={<Play />}/>
+          <Route path="/summary" element={<Summary />}/>
+          <Route path="/leaderboards" element={<Leaderboards />}/>
+          <Route path="*" element={<Home />}/>
+        </Routes>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    </div>
     </>
   )
-}
+};
 
-export default App
+export default App;
