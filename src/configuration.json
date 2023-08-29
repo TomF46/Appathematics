@@ -1,7 +1,7 @@
 {
     "questionSets": [
       {
-        
+        "id" : 1,
         "name": "33 Questions",
         "numberOfQuestions": 33,
         "operands": {
@@ -194,6 +194,34 @@
           { "username": "Janine", "score": 521, "displayScore": "08:41" },
           { "username": "Claire", "score": 532, "displayScore": "08:52" },
           { "username": "Tyler", "score": 550, "displayScore": "09:09" }
+        ]
+      },
+      {
+        "id" : 8,
+        "name": "3 Questions",
+        "numberOfQuestions": 3,
+        "operands": {
+          "multiplication": {
+            "chance": 0.33
+          },
+          "division": {
+            "chance": 0
+          },
+          "addition": {
+            "chance": 0.33
+          },
+          "subtraction": {
+            "chance": 0.33
+          }
+        },
+        "includedNumbers": [2, 3, 5, 10],
+        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        "initialHighScores": [
+          { "username": "Tom", "score": 200, "displayScore": "03:20" },
+          { "username": "Jenny", "score": 221, "displayScore": "03:41" },
+          { "username": "Steve", "score": 267, "displayScore": "04:27" },
+          { "username": "Claire", "score": 300, "displayScore": "05:00" },
+          { "username": "Nadine", "score": 310, "displayScore": "05:10" }
         ]
       }
     ]

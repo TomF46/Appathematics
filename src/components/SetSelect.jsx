@@ -1,24 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loadConfiguration } from "../redux/actions/gameActions"
+import configuration from "../configuration.json";
 
-function SetSelect({sets, onSetSelected, loadConfiguration}) {
+function SetSelect({onSetSelected}) {
+  const sets = configuration.questionSets;
   const [set, setSet] = useState(null);
-
-  useEffect(() => {
-    console.log(sets);
-      if (!sets || sets.length == 0) {
-          getSets();
-      }
-  }, [sets]);
-
-  function getSets(){
-    loadConfiguration().then(() => {
-    }).catch(() => {
-      console.log("Unable to load configuration");
-    })
-  }
 
   function onChange(event){
     const { value } = event.target;
@@ -74,19 +61,14 @@ function SetSelect({sets, onSetSelected, loadConfiguration}) {
 }
 
 SetSelect.propTypes = {
-  sets: PropTypes.array.isRequired,
   onSetSelected: PropTypes.func.isRequired,
   loadConfiguration: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
   return {
-    sets: state.game.questionSets
+    
   };
 };
 
-const mapDispatchToProps = {
-  loadConfiguration
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SetSelect);
+export default connect(mapStateToProps)(SetSelect);

@@ -1,10 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.jpg";
 import SetSelect from "../components/SetSelect";
 
 function Home() {
+    const navigate = useNavigate();
 
     function handleSetSelected(set){
-        console.log(set);
+        navigate(`/games/${set.id}/play`);
     }
 
     return (

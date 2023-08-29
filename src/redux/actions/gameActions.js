@@ -6,7 +6,6 @@ export function setConfiguration(config) {
 }
 
 export function setQuestionSets(sets){
-    console.log(sets);
     return {type: types.SET_QUESTION_SETS, sets};
 }
 

@@ -13,7 +13,7 @@ const App = () => {
       <div className="app-container container mx-auto px-4 lg:px-0 mb-4">
         <Routes>
           <Route path="/" element={<Home />}/>
-          <Route path="/play" element={<Play />}/>
+          <Route path="games/:id/play" element={<Play />}/>
           <Route path="/summary" element={<Summary />}/>
           <Route path="/leaderboards" element={<Leaderboards />}/>
           <Route path="*" element={<Home />}/>
