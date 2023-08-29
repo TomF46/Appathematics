@@ -19,6 +19,8 @@ function Play() {
     const [gameInProgress, setGameInProgress] = useState(false);
     const [activeQuestion, setActiveQuestion] = useState(null);
     const [currentAnswer, setCurrentAnswer] = useState(null);
+    const [inputClass, setInputClass] = useState("");
+
 
     useEffect(() => {
         if (!game) {
@@ -66,6 +68,7 @@ function Play() {
     }
 
     function handleKeyClicked(key){
+      setInputClass("");
       if (key == "enter") {
         submitCurrentAnswer();
         return;
@@ -87,6 +90,7 @@ function Play() {
     }
 
     function submitCurrentAnswer(){
+      setInputClass("");
       const isCorrect = answersService.checkIfCorrect(
         currentAnswer,
         activeQuestion.firstNumber,
@@ -104,7 +108,7 @@ function Play() {
     }
 
     function handleIncorrectAnswer(){
-      // Do some css stuff
+      setInputClass("incorrect");
     }
 
     function handleBackButton(){
@@ -118,22 +122,21 @@ function Play() {
 
     return (
       <>
-        <h1 className="text-4xl mb-4" >Play</h1>
         {game && (
-            <p>{game.name}</p>
+            <h1 className="text-center my-4 text-4xl">{game.name}</h1>
         )}
         {gameInProgress && (
           <div className="play">
             <div className="grid grid-cols-12">
               <div className="col-span-12">
-                <p>Question {questionIndex + 1} of {questions.length}</p>
+                <h2 className="text-center my-2 text-2xl">Question {questionIndex + 1} of {questions.length}</h2>
               </div>
               {activeQuestion && (
                 <div className="col-span-12">
-                  <p>{activeQuestion.firstNumber} {getOperator(activeQuestion.method)} {activeQuestion.secondNumber}</p>
+                  <p className="text-center text-xl">{activeQuestion.firstNumber} {getOperator(activeQuestion.method)} {activeQuestion.secondNumber}</p>
                 </div>
               )}
-              <div className="col-span-12">
+              <div className="col-span-12 justify-self-center my-4">
               <input
                   type="tel"
                   disabled
@@ -141,7 +144,7 @@ function Play() {
                   value={currentAnswer}
                   onChange={onInputChange}
                   maxLength="4"
-                  className="inputClass"
+                  className={`play-input ${inputClass}`}
                 />
               </div>
               <div className="col-span-12">
