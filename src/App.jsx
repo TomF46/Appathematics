@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Play from "./pages/Play";
-import Summary from "./pages/Summary";
 import Leaderboards from "./pages/Leaderboards";
 import Header from "./components/Header";
 
@@ -14,7 +13,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="games/:id/play" element={<Play />}/>
-          <Route path="/summary" element={<Summary />}/>
           <Route path="/leaderboards" element={<Leaderboards />}/>
           <Route path="*" element={<Home />}/>
         </Routes>

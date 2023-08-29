@@ -5,6 +5,9 @@ import QuestionsService from "../services/questionService";
 import Methods from "../services/methods.enum";
 import VirtualKeyboard from "../components/VirtualKeyboard";
 import AnswersService from "../services/answerService";
+import Timer from "../components/Timer";
+import gameStates from "../services/gameStates.enum";
+import Summary from "../components/Summary";
 
 function Play() {
     const { id } = useParams();
@@ -13,6 +16,7 @@ function Play() {
     const questionService = new QuestionsService();
     const answersService = new AnswersService();
     const navigate = useNavigate();
+    const [gameState, setGameState] = useState(gameStates.Play);
     const [game, setGame] = useState(null);
     const [questions, setQuestions] = useState(null);
     const [questionIndex, setQuestionIndex] = useState(null);
@@ -20,6 +24,7 @@ function Play() {
     const [activeQuestion, setActiveQuestion] = useState(null);
     const [currentAnswer, setCurrentAnswer] = useState(null);
     const [inputClass, setInputClass] = useState("");
+    const [score, setScore] = useState(null);
 
 
     useEffect(() => {
@@ -117,42 +122,59 @@ function Play() {
     }
 
     function handleQuizComplete(){
-      navigate("/");
+      setGameInProgress(false);
+      //navigate("/");
+    }
+
+    function handleTimerFinished(time){
+      setScore(time);
+      setGameState(gameStates.Summary);
     }
 
     return (
       <>
-        {game && (
-            <h1 className="text-center my-4 text-4xl">{game.name}</h1>
-        )}
-        {gameInProgress && (
-          <div className="play">
-            <div className="grid grid-cols-12">
-              <div className="col-span-12">
-                <h2 className="text-center my-2 text-2xl">Question {questionIndex + 1} of {questions.length}</h2>
-              </div>
-              {activeQuestion && (
+      {gameState == gameStates.Play && (
+        <>
+          {game && (
+              <h1 className="text-center my-4 text-4xl">{game.name}</h1>
+          )}
+          {questions && (
+            <div className="play">
+              <div className="grid grid-cols-12">
                 <div className="col-span-12">
-                  <p className="text-center text-xl">{activeQuestion.firstNumber} {getOperator(activeQuestion.method)} {activeQuestion.secondNumber}</p>
+                  <Timer timerIsRunning={gameInProgress} onTimerFinished={handleTimerFinished} />
                 </div>
-              )}
-              <div className="col-span-12 justify-self-center my-4">
-              <input
-                  type="tel"
-                  disabled
-                  ref={inputRef}
-                  value={currentAnswer}
-                  onChange={onInputChange}
-                  maxLength="4"
-                  className={`play-input ${inputClass}`}
-                />
-              </div>
-              <div className="col-span-12">
-                <VirtualKeyboard onKeyClicked={handleKeyClicked} />
+                <div className="col-span-12">
+                  <h2 className="text-center my-2 text-2xl">Question {questionIndex + 1} of {questions.length}</h2>
+                </div>
+                {activeQuestion && (
+                  <div className="col-span-12">
+                    <p className="text-center text-xl">{activeQuestion.firstNumber} {getOperator(activeQuestion.method)} {activeQuestion.secondNumber}</p>
+                  </div>
+                )}
+                <div className="col-span-12 justify-self-center my-4">
+                <input
+                    type="tel"
+                    disabled
+                    ref={inputRef}
+                    value={currentAnswer}
+                    onChange={onInputChange}
+                    maxLength="4"
+                    className={`play-input ${inputClass}`}
+                  />
+                </div>
+                <div className="col-span-12">
+                  <VirtualKeyboard onKeyClicked={handleKeyClicked} />
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </>
+      )}
+      {gameState == gameStates.Summary && (
+        <Summary game={game} score={score}/>
+      )
+      }
       </>
     )
 }
