@@ -26,7 +26,6 @@ function Play({setGameInProgress, time}) {
     const [inputClass, setInputClass] = useState("");
     const [score, setScore] = useState(null);
 
-
     useEffect(() => {
         if (!game) {
             let g = sets.find((x) => x.id == id)

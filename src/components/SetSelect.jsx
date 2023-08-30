@@ -5,7 +5,7 @@ import configuration from "../configuration.json";
 
 function SetSelect({onSetSelected}) {
   const sets = configuration.questionSets;
-  const [set, setSet] = useState(null);
+  const [set, setSet] = useState(sets[0].id);
 
   function onChange(event){
     const { value } = event.target;
@@ -20,38 +20,32 @@ function SetSelect({onSetSelected}) {
   return (
     <>
     {sets.length > 0 ? (
-      <>
-      <div className="field">
-            <label
-                className="block mb-1 font-bold text-xs text-primary"
-                htmlFor={name}
-            >
-                Set select
-            </label>
-            <div className="relative">
-                <select
-                    name={"Select set"}
-                    value={set}
-                    onChange={onChange}
-                    className="block appearance-none focus:outline-none focus:border-primary text-primary w-full bg-backgroundOffset2 border border-gray-500 hover:border-gray-500 p-2 pr-8 leading-tight focus:outline-none focus:outline rounded"
-                >
-                    <option value={null} >Select a set</option>
-                    {sets &&
-                        sets.map((s, i) => {
-                            return (
-                                <option key={i} value={s.id}>
-                                    {s.name}
-                                </option>
-                            );
-                        })
-                    }
-                </select>
-            </div>
+      <div className="grid grid-cols-12">
+        <div className="col-span-12 justify-self-center">
+          <select
+              name={"Select set"}
+              value={set}
+              onChange={onChange}
+              id="custom-select"
+              className="mx-auto"
+          >
+              {sets &&
+                  sets.map((s, i) => {
+                      return (
+                          <option key={i} value={s.id}>
+                              {s.name}
+                          </option>
+                      );
+                  })
+              }
+          </select>
         </div>
         {set && (
-          <button onClick={handleSelected} className="px-4 py-2 bg-primary rounded">Select</button>
+          <div className="col-span-12 justify-self-center">
+            <button onClick={handleSelected} className="px-8 py-2 bg-primary rounded-full text-4xl text-white">Select</button>
+          </div>
         )}
-        </>
+        </div>
 
     ) : (
       <p>Loading sets</p>

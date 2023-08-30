@@ -1,11 +1,20 @@
 import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { setTimer } from "../redux/actions/gameActions";
+import { setTimer, setGameInProgress} from "../redux/actions/gameActions";
 import { convertMilisecondsToReadable } from "../services/timerService";
+import { useLocation } from "react-router-dom";
 
-function Timer({ time, gameInProgress, setTimer}) {
+function Timer({ time, gameInProgress, setTimer, setGameInProgress}) {
     const readableTime = convertMilisecondsToReadable(time);
+    const {pathname} = useLocation();
+
+    useEffect(()=>{
+        // Stops clock if page changes away from game
+        if(!pathname.includes("/play")){
+            setGameInProgress(false);
+        }
+    },[pathname])
 
     useEffect(() => {
         if(gameInProgress){
@@ -35,7 +44,8 @@ function Timer({ time, gameInProgress, setTimer}) {
 Timer.propTypes = {
     gameInProgress: PropTypes.bool.isRequired,
     time: PropTypes.number,
-    setTimer: PropTypes.func.isRequired
+    setTimer: PropTypes.func.isRequired,
+    setGameInProgress: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -46,7 +56,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-    setTimer
+    setTimer,
+    setGameInProgress
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Timer);

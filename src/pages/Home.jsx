@@ -12,13 +12,13 @@ function Home() {
     return (
         <>
             <img src={logo} className="mx-auto mt-4 logo" />
-            <div className="text-center">
+            <div className="text-center text-primary">
                 <h2 className="text-4xl">Welcome to Appathematics</h2>
-                <p>
+                <p className="text-lg">
                     Choose your level from the drop down below and click the
                     start button to begin
                 </p>
-                <p>
+                <p className="text-lg">
                     The higher the number of questions the harder the possible
                     questions become
                 </p>

@@ -5,9 +5,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'curse_casualregular';
+  src: url('fonts/curse_casual-webfont.woff2') format('woff2'),
+        url('fonts/curse_casual-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
 
 :root {
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'curse_casualregular', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -84,4 +92,48 @@
 
 .virtual-keyboard{
   width: 260px;
+}
+
+select#soflow,
+select#custom-select {
+  text-align-last: center;
+  -webkit-appearance: button;
+  -webkit-border-radius: 2px;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-padding-end: 20px;
+  -webkit-padding-start: 2px;
+  -webkit-user-select: none;
+  background-image: url(/dropdown.png),
+    -webkit-linear-gradient(#fafafa, #f4f4f4 40%, #e5e5e5);
+  background-position: 97% center;
+  background-repeat: no-repeat;
+  border: 1px solid #aaa;
+  color: #555;
+  font-size: 26px;
+  margin: 20px;
+  overflow: hidden;
+  padding: 5px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 300px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
+
+select#custom-select {
+  color: #fff;
+  background-image: url(/dropdown.png),
+    -webkit-linear-gradient(#219ff4, #219ff4 40%, #219ff4);
+  background-color: #219ff4;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  padding-left: 15px;
+}
+
+/* IE fix for custom select box */
+select#custom-select::-ms-expand {
+  display: none;
 }

@@ -4,10 +4,10 @@ import { convertMilisecondsToReadable } from "../services/timerService";
 function Summary({game, score}) {
     const readableTime = convertMilisecondsToReadable(score);
     return (
-        <div className="text-center my-4">
+        <div className="text-center my-4 text-primary">
             <h1 className="text-4xl mb-4">Congratulations</h1>
             <p className="text-2xl">You finished {game.name} in...</p>
-            <p className="text-xl">
+            <p className="text-2xl mt-4">
               {readableTime.hours}:{readableTime.minutes.toString().padStart(2, "0")}:
               {readableTime.seconds.toString().padStart(2, "0")}:
               {readableTime.milliseconds.toString().padStart(2, "0")}
