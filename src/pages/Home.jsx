@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.jpg";
 import SetSelect from "../components/SetSelect";
 
@@ -23,7 +23,10 @@ function Home() {
                     questions become
                 </p>
             </div>
-            <SetSelect onSetSelected={handleSetSelected} />
+            <SetSelect onSetSelected={handleSetSelected} autoSelectMode={false}/>
+            <div className="text-center my-4">
+                <Link className="text-primary text-center underline" to={"/leaderboards"}>View leaderboards</Link>
+            </div>
         </>
     );
 }

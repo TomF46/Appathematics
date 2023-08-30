@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import configuration from "../configuration.json";
 import { useEffect, useState, useRef } from "react";
 import QuestionsService from "../services/questionService";
 import Methods from "../services/methods.enum";
@@ -11,10 +10,9 @@ import gameStates from "../services/gameStates.enum";
 import Summary from "../components/Summary";
 import { setGameInProgress } from "../redux/actions/gameActions";
 
-function Play({setGameInProgress, time}) {
+function Play({setGameInProgress, time, questionSets}) {
     const { id } = useParams();
     const inputRef = useRef(null);
-    const sets = configuration.questionSets;
     const questionService = new QuestionsService();
     const answersService = new AnswersService();
     const [gameState, setGameState] = useState(gameStates.Play);
@@ -28,7 +26,7 @@ function Play({setGameInProgress, time}) {
 
     useEffect(() => {
         if (!game) {
-            let g = sets.find((x) => x.id == id)
+            let g = questionSets.find((x) => x.id == id)
             setGame(g);
             generateQuestions(g);
         }
@@ -174,12 +172,14 @@ function Play({setGameInProgress, time}) {
 Play.propTypes = {
   setGameInProgress: PropTypes.func.isRequired,
   time: PropTypes.number,
+  questionSets: PropTypes.array.isRequired
 };
 
 
 const mapStateToProps = (state) => {
   return {
-      time: state.game.timer
+      time: state.game.timer,
+      questionSets: state.game.configuration.questionSets
   };
 };
 

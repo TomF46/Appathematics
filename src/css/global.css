@@ -15,7 +15,7 @@
 }
 
 :root {
-  font-family: 'curse_casualregular', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -29,6 +29,20 @@
   -webkit-text-size-adjust: 100%;
 
   --primary-color: #219ff4;
+}
+
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+button,
+.question-text,
+input,
+option,
+select {
+  font-family: 'curse_casualregular', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .app-container{

@@ -1,5 +1,9 @@
+import configuration from "../../config/configuration.json";
+import initialHighScores from "../../config/initialHighScores.json";
+
 export default {
-    configuration: {},
+    configuration: configuration,
     gameInProgress: false,
-    timer: null
+    timer: null,
+    highScores: initialHighScores
 }
