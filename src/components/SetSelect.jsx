@@ -46,7 +46,7 @@ function SetSelect({onSetSelected, questionSets, autoSelectMode}) {
         </div>
         {set && !autoSelectMode && (
           <div className="col-span-12 justify-self-center">
-            <button onClick={handleSelected} className="px-8 py-2 bg-primary rounded-full text-4xl text-white">Select</button>
+            <button onClick={handleSelected} className="px-8 py-2 bg-primary rounded-full text-3xl text-white">Select</button>
           </div>
         )}
         </div>

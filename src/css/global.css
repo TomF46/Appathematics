@@ -41,7 +41,8 @@ button,
 .question-text,
 input,
 option,
-select {
+select,
+.link-button {
   font-family: 'curse_casualregular', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 

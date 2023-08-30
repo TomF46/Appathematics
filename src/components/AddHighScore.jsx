@@ -3,13 +3,11 @@ import { useState } from "react";
 import TextInput from "./TextInput";
 import { setHighScores } from "../redux/actions/gameActions";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
-function AddHighScore({game, score, highScores, setHighScores}) {
+function AddHighScore({game, score, highScores, setHighScores, onScoreSubmitted}) {
     const [username, setUsername] = useState("");
     const [error, setError] = useState(null)
-    const navigate = useNavigate();
-    
+
     function onNameChange(event){
         const { value } = event.target;
         setUsername(value);
@@ -31,7 +29,7 @@ function AddHighScore({game, score, highScores, setHighScores}) {
         const leaderboard = highScoresCopy.find(x => x.setId == game.id);
         leaderboard.scores.push(leaderboardScore);
         setHighScores(highScoresCopy);
-        navigate("/");
+        onScoreSubmitted();
     }
 
     return(
@@ -57,7 +55,8 @@ AddHighScore.propTypes = {
     game: PropTypes.object.isRequired,
     score: PropTypes.number.isRequired,
     highScores: PropTypes.object.isRequired,
-    setHighScores: PropTypes.func.isRequired
+    setHighScores: PropTypes.func.isRequired,
+    onScoreSubmitted: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
