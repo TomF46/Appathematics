@@ -2,81 +2,81 @@
     {
         "setId": 1,
         "scores": [
-            { "username": "Tom", "score": 200, "displayScore": "03:20" },
-            { "username": "Jenny", "score": 221, "displayScore": "03:41" },
-            { "username": "Steve", "score": 267, "displayScore": "04:27" },
-            { "username": "Claire", "score": 300, "displayScore": "05:00" },
-            { "username": "Nadine", "score": 310, "displayScore": "05:10" }
+            { "username": "Tom", "score": 200},
+            { "username": "Jenny", "score": 221},
+            { "username": "Steve", "score": 267},
+            { "username": "Claire", "score": 300},
+            { "username": "Nadine", "score": 310}
         ]
     },
     {
         "setId": 2,
         "scores": [
-            { "username": "Hannah", "score": 220, "displayScore": "03:40" },
-            { "username": "Bill", "score": 281, "displayScore": "04:41" },
-            { "username": "Emily", "score": 299, "displayScore": "04:59" },
-            { "username": "Claire", "score": 305, "displayScore": "05:05" },
-            { "username": "Jamie", "score": 315, "displayScore": "05:15" }
+            { "username": "Hannah", "score": 220},
+            { "username": "Bill", "score": 281},
+            { "username": "Emily", "score": 299},
+            { "username": "Claire", "score": 305},
+            { "username": "Jamie", "score": 315}
         ]
     },
     {
         "setId": 3,
         "scores": [
-            { "username": "Mark", "score": 290, "displayScore": "04:49" },
-            { "username": "Ed", "score": 295, "displayScore": "04:55" },
-            { "username": "Emily", "score": 321, "displayScore": "05:20" },
-            { "username": "Rita", "score": 333, "displayScore": "05:32" },
-            { "username": "Laura", "score": 350, "displayScore": "05:49" }
+            { "username": "Mark", "score": 290},
+            { "username": "Ed", "score": 295},
+            { "username": "Emily", "score": 321},
+            { "username": "Rita", "score": 333},
+            { "username": "Laura", "score": 350}
         ]
     },
     {
         "setId": 4,
         "scores": [
-            { "username": "Jen", "score": 323, "displayScore": "05:23" },
-            { "username": "Todd", "score": 340, "displayScore": "05:40" },
-            { "username": "Louise", "score": 365, "displayScore": "06:04" },
-            { "username": "Karen", "score": 377, "displayScore": "06:16" },
-            { "username": "Charl", "score": 401, "displayScore": "06:41" }
+            { "username": "Jen", "score": 323},
+            { "username": "Todd", "score": 340},
+            { "username": "Louise", "score": 365},
+            { "username": "Karen", "score": 377},
+            { "username": "Charl", "score": 401}
         ]
     },
     {
         "setId": 5,
         "scores": [
-            { "username": "Claire", "score": 400, "displayScore": "06:40" },
-            { "username": "Tom", "score": 410, "displayScore": "06:49" },
-            { "username": "Karen", "score": 425, "displayScore": "07:04" },
-            { "username": "Louise", "score": 440, "displayScore": "07:19" },
-            { "username": "Mark", "score": 450, "displayScore": "07:30" }
+            { "username": "Claire", "score": 400 },
+            { "username": "Tom", "score": 410},
+            { "username": "Karen", "score": 425},
+            { "username": "Louise", "score": 440},
+            { "username": "Mark", "score": 450}
         ]
     },
     {
         "setId": 6,
         "scores": [
-            { "username": "Rob", "score": 430, "displayScore": "07:10" },
-            { "username": "Mike", "score": 440, "displayScore": "07:19" },
-            { "username": "Emily", "score": 455, "displayScore": "07:34" },
-            { "username": "Harry", "score": 467, "displayScore": "07:46" },
-            { "username": "Mike", "score": 473, "displayScore": "07:53" }
+            { "username": "Rob", "score": 430},
+            { "username": "Mike", "score": 440},
+            { "username": "Emily", "score": 455},
+            { "username": "Harry", "score": 467},
+            { "username": "Mike", "score": 473}
         ]
     },
     {
         "setId": 7,
         "scores": [
-            { "username": "Ryan", "score": 490, "displayScore": "08:09" },
-            { "username": "Clive", "score": 500, "displayScore": "08:20" },
-            { "username": "Janine", "score": 521, "displayScore": "08:41" },
-            { "username": "Claire", "score": 532, "displayScore": "08:52" },
-            { "username": "Tyler", "score": 550, "displayScore": "09:09" }
+            { "username": "Ryan", "score": 490},
+            { "username": "Clive", "score": 500},
+            { "username": "Janine", "score": 521},
+            { "username": "Claire", "score": 532},
+            { "username": "Tyler", "score": 550}
         ]
     },
     {
         "setId": 8,
         "scores": [
-            { "username": "Harry", "score": 204, "displayScore": "01:20" },
-            { "username": "Sam", "score": 231, "displayScore": "01:51" },
-            { "username": "Nigel", "score": 246, "displayScore": "02:27" },
-            { "username": "Claire", "score": 305, "displayScore": "02:50" },
-            { "username": "Zara", "score": 310, "displayScore": "03:10" }
+            { "username": "Harry", "score": 204},
+            { "username": "Sam", "score": 231},
+            { "username": "Nigel", "score": 246},
+            { "username": "Claire", "score": 305},
+            { "username": "Zara", "score": 310}
         ]
     }
 ]

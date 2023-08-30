@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import ScoresLeaderboardLine from "./ScoresLeaderboardLine";
 
 function Leaderboard({scores}) {
     return (
@@ -13,11 +14,7 @@ function Leaderboard({scores}) {
             <tbody>
                 {scores.map((score, i) => {
                     return (
-                        <tr key={i}>
-                            <td>{score.username}</td>
-                            <td>{score.score}</td>
-                            <td>{score.displayScore}</td>
-                        </tr>
+                        <ScoresLeaderboardLine score={score} key={i} />
                     )
                 })}
             </tbody>

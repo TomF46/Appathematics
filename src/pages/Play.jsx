@@ -34,7 +34,6 @@ function Play({setGameInProgress, time, questionSets}) {
 
     useEffect(() => {
       if (questions) {
-          console.log(questions);
           setGameInProgress(true);
           setQuestionIndex(0);
       }
@@ -59,7 +58,7 @@ function Play({setGameInProgress, time, questionSets}) {
     }
 
     function onInputChange(event){
-      console.log(event);
+      // console.log(event);
     }
 
     function getOperator(method){

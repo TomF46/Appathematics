@@ -1,15 +1,11 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import SetSelect from "../components/SetSelect";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Leaderboard from "../components/Leaderboard";
 
 function Leaderboards({ highScores }) {
     const [scores, setScores] = useState(null);
-
-    useEffect(() => {
-        console.log(scores);
-    }, [scores]);
 
     function handleSetSelected(set) {
         let selectedSet = highScores.find((x) => x.setId == set.id);
