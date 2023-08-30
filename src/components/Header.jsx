@@ -1,24 +1,28 @@
 // import { useEffect, useState } from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import Timer from "./Timer";
 
-function Header() {
+function Header({gameInProgress}) {
   return (
     <nav className="bg-primary px-4 py-4 shadow-lg">
-            <h1 className="text-center text-white text-lg">Appathematics</h1>
+      {gameInProgress ? (
+        <Timer />
+      ): (
+        <h1 className="text-center text-white text-xl">Appathematics</h1>
+      )}
     </nav>
   );
 }
 
 Header.propTypes = {
+  gameInProgress: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = () => {
+const mapStateToProps = (state) => {
   return {
+    gameInProgress: state.game.gameInProgress,
   };
 };
 
-const mapDispatchToProps = {
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps)(Header);

@@ -1,26 +1,26 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import configuration from "../configuration.json";
 import { useEffect, useState, useRef } from "react";
 import QuestionsService from "../services/questionService";
 import Methods from "../services/methods.enum";
 import VirtualKeyboard from "../components/VirtualKeyboard";
 import AnswersService from "../services/answerService";
-import Timer from "../components/Timer";
 import gameStates from "../services/gameStates.enum";
 import Summary from "../components/Summary";
+import { setGameInProgress } from "../redux/actions/gameActions";
 
-function Play() {
+function Play({setGameInProgress, time}) {
     const { id } = useParams();
     const inputRef = useRef(null);
     const sets = configuration.questionSets;
     const questionService = new QuestionsService();
     const answersService = new AnswersService();
-    const navigate = useNavigate();
     const [gameState, setGameState] = useState(gameStates.Play);
     const [game, setGame] = useState(null);
     const [questions, setQuestions] = useState(null);
     const [questionIndex, setQuestionIndex] = useState(null);
-    const [gameInProgress, setGameInProgress] = useState(false);
     const [activeQuestion, setActiveQuestion] = useState(null);
     const [currentAnswer, setCurrentAnswer] = useState(null);
     const [inputClass, setInputClass] = useState("");
@@ -123,10 +123,6 @@ function Play() {
 
     function handleQuizComplete(){
       setGameInProgress(false);
-      //navigate("/");
-    }
-
-    function handleTimerFinished(time){
       setScore(time);
       setGameState(gameStates.Summary);
     }
@@ -136,20 +132,17 @@ function Play() {
       {gameState == gameStates.Play && (
         <>
           {game && (
-              <h1 className="text-center my-4 text-4xl">{game.name}</h1>
+              <h1 className="text-center my-4 text-4xl text-primary">{game.name}</h1>
           )}
           {questions && (
             <div className="play">
               <div className="grid grid-cols-12">
                 <div className="col-span-12">
-                  <Timer timerIsRunning={gameInProgress} onTimerFinished={handleTimerFinished} />
-                </div>
-                <div className="col-span-12">
-                  <h2 className="text-center my-2 text-2xl">Question {questionIndex + 1} of {questions.length}</h2>
+                  <h2 className="text-center my-2 text-2xl text-primary">Question {questionIndex + 1} of {questions.length}</h2>
                 </div>
                 {activeQuestion && (
                   <div className="col-span-12">
-                    <p className="text-center text-xl">{activeQuestion.firstNumber} {getOperator(activeQuestion.method)} {activeQuestion.secondNumber}</p>
+                    <p className="text-center text-xl text-primary">{activeQuestion.firstNumber} {getOperator(activeQuestion.method)} {activeQuestion.secondNumber}</p>
                   </div>
                 )}
                 <div className="col-span-12 justify-self-center my-4">
@@ -179,5 +172,20 @@ function Play() {
     )
 }
 
-export default Play;
+Play.propTypes = {
+  setGameInProgress: PropTypes.func.isRequired,
+  time: PropTypes.number,
+};
 
+
+const mapStateToProps = (state) => {
+  return {
+      time: state.game.timer
+  };
+};
+
+const mapDispatchToProps = {
+    setGameInProgress
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Play);
