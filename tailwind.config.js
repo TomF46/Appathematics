@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         'primary' : 'var(--primary-color)',
+        'enter' : 'var(--enter-color)',
       }
     },
   },
