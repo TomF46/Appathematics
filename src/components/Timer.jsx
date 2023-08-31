@@ -34,8 +34,13 @@ function Timer({ time, gameInProgress, setTimer, setGameInProgress}) {
 
     return <div className="timer">
         <p className="text-center text-white text-3xl">
-            {readableTime.hours}:{readableTime.minutes.toString().padStart(2, "0")}:
-            {readableTime.seconds.toString().padStart(2, "0")}:
+            {readableTime.hours > 0 && (
+                <>
+                    {readableTime.hours}:
+                </>
+            )}
+            {readableTime.minutes.toString().padStart(2, "0")}:
+            {readableTime.seconds.toString().padStart(2, "0")}.
             {readableTime.hundredths.toString().padStart(2, "0")}
         </p>
     </div>;

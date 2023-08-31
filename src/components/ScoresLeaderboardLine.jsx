@@ -7,9 +7,16 @@ function ScoresLeaderboardLine({score}) {
         <tr>
             <td>{score.username}</td>
             <td>{score.score}</td>
-            <td>{readableTime.hours}:{readableTime.minutes.toString().padStart(2, "0")}:
-            {readableTime.seconds.toString().padStart(2, "0")}:
-            {readableTime.hundredths.toString().padStart(2, "0")}</td>
+            <td>
+                {readableTime.hours > 0 && (
+                    <>
+                        {readableTime.hours}:
+                    </>
+                )}
+                {readableTime.minutes.toString().padStart(2, "0")}:
+                {readableTime.seconds.toString().padStart(2, "0")}.
+                {readableTime.hundredths.toString().padStart(2, "0")}
+            </td>
         </tr>
     );
 }
