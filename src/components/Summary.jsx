@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { convertMilisecondsToReadable } from "../services/timerService";
+import { convertHundredthsToReadable } from "../services/timerService";
 import AddHighScore from "./AddHighScore";
 import { connect } from "react-redux";
 import Leaderboard from "./Leaderboard";
@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Summary({game, score, highScores}) {
-    const readableTime = convertMilisecondsToReadable(score);
+    const readableTime = convertHundredthsToReadable(score);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
     return (
@@ -18,7 +18,7 @@ function Summary({game, score, highScores}) {
                 <p className="text-2xl mt-4">
                 {readableTime.hours}:{readableTime.minutes.toString().padStart(2, "0")}:
                 {readableTime.seconds.toString().padStart(2, "0")}:
-                {readableTime.milliseconds.toString().padStart(2, "0")}
+                {readableTime.hundredths.toString().padStart(2, "0")}
                 </p>
             </div>
             <div className="text-center">

@@ -2,11 +2,11 @@ import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { setTimer, setGameInProgress} from "../redux/actions/gameActions";
-import { convertMilisecondsToReadable } from "../services/timerService";
+import { convertHundredthsToReadable } from "../services/timerService";
 import { useLocation } from "react-router-dom";
 
 function Timer({ time, gameInProgress, setTimer, setGameInProgress}) {
-    const readableTime = convertMilisecondsToReadable(time);
+    const readableTime = convertHundredthsToReadable(time);
     const {pathname} = useLocation();
 
     useEffect(()=>{
@@ -36,7 +36,7 @@ function Timer({ time, gameInProgress, setTimer, setGameInProgress}) {
         <p className="text-center text-white text-3xl">
             {readableTime.hours}:{readableTime.minutes.toString().padStart(2, "0")}:
             {readableTime.seconds.toString().padStart(2, "0")}:
-            {readableTime.milliseconds.toString().padStart(2, "0")}
+            {readableTime.hundredths.toString().padStart(2, "0")}
         </p>
     </div>;
 }

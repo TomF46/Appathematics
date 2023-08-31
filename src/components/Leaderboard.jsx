@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import ScoresLeaderboardLine from "./ScoresLeaderboardLine";
 
 function Leaderboard({scores}) {
+    const sortedLeaderboard = scores.slice().sort((a, b) => a.score - b.score);
     return (
         <table className="table-auto w-full p-1 text-center border border-primary">
             <thead className="bg-primary">
@@ -12,7 +13,7 @@ function Leaderboard({scores}) {
                 </tr>
             </thead>
             <tbody>
-                {scores.map((score, i) => {
+                {sortedLeaderboard.map((score, i) => {
                     return (
                         <ScoresLeaderboardLine score={score} key={i} />
                     )
