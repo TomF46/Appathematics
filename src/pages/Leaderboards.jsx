@@ -14,9 +14,6 @@ function Leaderboards({ highScores }) {
 
     return (
         <>
-            <h1 className="text-4xl mb-4 text-primary text-center my-8">
-                Leaderboards
-            </h1>
             <SetSelect onSetSelected={handleSetSelected} autoSelectMode={true} />
             {scores && scores.length > 0 && (
                 <div className="my-4 grid grid-cols-12">

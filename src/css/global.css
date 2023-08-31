@@ -42,7 +42,8 @@ button,
 input,
 option,
 select,
-.link-button {
+.link-button,
+.timer {
   font-family: 'curse_casualregular', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
@@ -151,4 +152,11 @@ select#custom-select {
 /* IE fix for custom select box */
 select#custom-select::-ms-expand {
   display: none;
+}
+
+.back-button{
+  position: absolute;
+  top: 25%;
+  z-index: 999;
+  margin-left: 10px;
 }
