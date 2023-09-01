@@ -1,11 +1,10 @@
-// import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import Timer from "./Timer";
 import { Link, useLocation } from "react-router-dom";
 
-function Header({gameInProgress}) {
+function Header() {
   const {pathname} = useLocation();
+  const gameInProgress = useSelector((state) => state.game.gameInProgress)
 
   function getPageName(){
     switch(pathname){
@@ -38,14 +37,4 @@ function Header({gameInProgress}) {
   );
 }
 
-Header.propTypes = {
-  gameInProgress: PropTypes.bool.isRequired,
-};
-
-const mapStateToProps = (state) => {
-  return {
-    gameInProgress: state.game.gameInProgress,
-  };
-};
-
-export default connect(mapStateToProps)(Header);
+export default Header;

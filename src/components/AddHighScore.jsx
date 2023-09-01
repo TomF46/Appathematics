@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import TextInput from "./TextInput";
-import { setHighScores } from "../redux/actions/gameActions";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import gameActions from "../redux/actions/gameActions";
 
-function AddHighScore({game, score, highScores, setHighScores, onScoreSubmitted}) {
+function AddHighScore({game, score, onScoreSubmitted}) {
+    const highScores = useSelector((state) => state.game.highScores);
+    const dispatch = useDispatch()
     const [username, setUsername] = useState("");
     const [error, setError] = useState(null)
 
@@ -28,7 +30,7 @@ function AddHighScore({game, score, highScores, setHighScores, onScoreSubmitted}
         const highScoresCopy =  JSON.parse(JSON.stringify(highScores))
         const leaderboard = highScoresCopy.find(x => x.setId == game.id);
         leaderboard.scores.push(leaderboardScore);
-        setHighScores(highScoresCopy);
+        dispatch(gameActions.setHighScores(highScoresCopy));
         onScoreSubmitted();
     }
 
@@ -54,19 +56,7 @@ function AddHighScore({game, score, highScores, setHighScores, onScoreSubmitted}
 AddHighScore.propTypes = {
     game: PropTypes.object.isRequired,
     score: PropTypes.number.isRequired,
-    highScores: PropTypes.object.isRequired,
-    setHighScores: PropTypes.func.isRequired,
     onScoreSubmitted: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => {
-    return {
-        highScores: state.game.highScores,
-    };
-};
-
-const mapDispatchToProps = {
-    setHighScores,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddHighScore);
+export default AddHighScore;

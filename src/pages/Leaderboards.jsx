@@ -1,10 +1,10 @@
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import SetSelect from "../components/SetSelect";
 import { useState } from "react";
 import Leaderboard from "../components/Leaderboard";
 
-function Leaderboards({ highScores }) {
+function Leaderboards() {
+    const highScores = useSelector((state) => state.game.highScores);
     const [scores, setScores] = useState(null);
 
     function handleSetSelected(set) {
@@ -26,14 +26,4 @@ function Leaderboards({ highScores }) {
     );
 }
 
-Leaderboards.propTypes = {
-    highScores: PropTypes.array.isRequired,
-};
-
-const mapStateToProps = (state) => {
-    return {
-        highScores: state.game.highScores,
-    };
-};
-
-export default connect(mapStateToProps)(Leaderboards);
+export default Leaderboards;

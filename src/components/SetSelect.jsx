@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
-function SetSelect({onSetSelected, questionSets, autoSelectMode}) {
+function SetSelect({onSetSelected, autoSelectMode}) {
+  const questionSets = useSelector((state) => state.game.configuration.questionSets)
   const [set, setSet] = useState(questionSets[0].id);
 
   useEffect(() => {
@@ -60,14 +61,7 @@ function SetSelect({onSetSelected, questionSets, autoSelectMode}) {
 
 SetSelect.propTypes = {
   onSetSelected: PropTypes.func.isRequired,
-  questionSets: PropTypes.array.isRequired,
   autoSelectMode: PropTypes.bool.isRequired
 };
 
-const mapStateToProps = (state) => {
-  return {
-      questionSets: state.game.configuration.questionSets
-  };
-};
-
-export default connect(mapStateToProps)(SetSelect);
+export default SetSelect;

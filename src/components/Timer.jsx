@@ -1,31 +1,33 @@
-import PropTypes from "prop-types";
 import { useEffect } from "react";
-import { connect } from "react-redux";
-import { setTimer, setGameInProgress} from "../redux/actions/gameActions";
+import { useDispatch, useSelector } from "react-redux";
+import gameActions from "../redux/actions/gameActions";
 import { convertHundredthsToReadable } from "../services/timerService";
 import { useLocation } from "react-router-dom";
 
-function Timer({ time, gameInProgress, setTimer, setGameInProgress}) {
+function Timer() {
+    const time = useSelector((state) => state.game.timer)
+    const gameInProgress = useSelector((state) => state.game.gameInProgress)
+    const dispatch = useDispatch()
     const readableTime = convertHundredthsToReadable(time);
     const {pathname} = useLocation();
 
     useEffect(()=>{
         // Stops clock if page changes away from game
         if(!pathname.includes("/play")){
-            setGameInProgress(false);
+            dispatch(gameActions.setGameInProgress(false));
         }
     },[pathname])
 
     useEffect(() => {
         if(gameInProgress){
-            setTimer(0);
+            dispatch(gameActions.setTimer(0));
         }
     }, [gameInProgress]);
 
     useEffect(() => {
         let intervalId;
         if(gameInProgress){
-            intervalId = setInterval(() => setTimer(time + 1), 10);
+            intervalId = setInterval(() => dispatch(gameActions.setTimer(time + 1)), 10);
         }
 
         return () => clearInterval(intervalId);
@@ -46,23 +48,4 @@ function Timer({ time, gameInProgress, setTimer, setGameInProgress}) {
     </div>;
 }
 
-Timer.propTypes = {
-    gameInProgress: PropTypes.bool.isRequired,
-    time: PropTypes.number,
-    setTimer: PropTypes.func.isRequired,
-    setGameInProgress: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => {
-    return {
-        gameInProgress: state.game.gameInProgress,
-        time: state.game.timer
-    };
-};
-
-const mapDispatchToProps = {
-    setTimer,
-    setGameInProgress
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Timer);
+export default Timer;

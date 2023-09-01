@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
 import { convertHundredthsToReadable } from "../services/timerService";
 import AddHighScore from "./AddHighScore";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import Leaderboard from "./Leaderboard";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Summary({game, score, highScores}) {
+function Summary({game, score}) {
+    const highScores = useSelector((state) => state.game.highScores.find(x => x.setId == game.id).scores);
     const readableTime = convertHundredthsToReadable(score);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -40,15 +41,7 @@ function Summary({game, score, highScores}) {
 
 Summary.propTypes = {
     game: PropTypes.object.isRequired,
-    score: PropTypes.object.isRequired,
-    highScores: PropTypes.array.isRequired
+    score: PropTypes.number.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => {
-    console.log(ownProps);
-    return {
-        highScores: state.game.highScores.find(x => x.setId == ownProps.game.id).scores,
-    };
-};
-
-export default connect(mapStateToProps)(Summary);
+export default Summary;

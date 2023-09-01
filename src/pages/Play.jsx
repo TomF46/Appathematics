@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, useRef } from "react";
 import QuestionsService from "../services/questionService";
 import Methods from "../services/methods.enum";
@@ -8,11 +7,14 @@ import VirtualKeyboard from "../components/VirtualKeyboard";
 import AnswersService from "../services/answerService";
 import gameStates from "../services/gameStates.enum";
 import Summary from "../components/Summary";
-import { setGameInProgress } from "../redux/actions/gameActions";
+import gameActions from "../redux/actions/gameActions";
 
-function Play({setGameInProgress, time, questionSets}) {
+function Play() {
     const { id } = useParams();
     const inputRef = useRef(null);
+    const time = useSelector((state) => state.game.timer);
+    const questionSets = useSelector((state) => state.game.configuration.questionSets);
+    const dispatch = useDispatch();
     const questionService = new QuestionsService();
     const answersService = new AnswersService();
     const [gameState, setGameState] = useState(gameStates.Play);
@@ -34,7 +36,7 @@ function Play({setGameInProgress, time, questionSets}) {
 
     useEffect(() => {
       if (questions) {
-          setGameInProgress(true);
+          dispatch(gameActions.setGameInProgress(true));
           setQuestionIndex(0);
       }
   }, [questions]);
@@ -118,7 +120,7 @@ function Play({setGameInProgress, time, questionSets}) {
     }
 
     function handleQuizComplete(){
-      setGameInProgress(false);
+      dispatch(gameActions.setGameInProgress(false));
       setScore(time);
       setGameState(gameStates.Summary);
     }
@@ -168,22 +170,4 @@ function Play({setGameInProgress, time, questionSets}) {
     )
 }
 
-Play.propTypes = {
-  setGameInProgress: PropTypes.func.isRequired,
-  time: PropTypes.number,
-  questionSets: PropTypes.array.isRequired
-};
-
-
-const mapStateToProps = (state) => {
-  return {
-      time: state.game.timer,
-      questionSets: state.game.configuration.questionSets
-  };
-};
-
-const mapDispatchToProps = {
-    setGameInProgress
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Play);
+export default Play;
