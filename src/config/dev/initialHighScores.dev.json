@@ -1,0 +1,82 @@
+[
+    {
+        "setId": 1,
+        "scores": [
+            { "username": "Tom", "score": 200},
+            { "username": "Jenny", "score": 221},
+            { "username": "Steve", "score": 267},
+            { "username": "Claire", "score": 300},
+            { "username": "Nadine", "score": 310}
+        ]
+    },
+    {
+        "setId": 2,
+        "scores": [
+            { "username": "Hannah", "score": 220},
+            { "username": "Bill", "score": 281},
+            { "username": "Emily", "score": 299},
+            { "username": "Claire", "score": 305},
+            { "username": "Jamie", "score": 315}
+        ]
+    },
+    {
+        "setId": 3,
+        "scores": [
+            { "username": "Mark H", "score": 290},
+            { "username": "Ed", "score": 295},
+            { "username": "Emily", "score": 321},
+            { "username": "Rita", "score": 333},
+            { "username": "Laura", "score": 350}
+        ]
+    },
+    {
+        "setId": 4,
+        "scores": [
+            { "username": "Jenny", "score": 323},
+            { "username": "Todd", "score": 340},
+            { "username": "Louise", "score": 365},
+            { "username": "Karen", "score": 377},
+            { "username": "Charl", "score": 401}
+        ]
+    },
+    {
+        "setId": 5,
+        "scores": [
+            { "username": "Claire", "score": 400 },
+            { "username": "Tom", "score": 410},
+            { "username": "Karen", "score": 425},
+            { "username": "Louise", "score": 440},
+            { "username": "Mark", "score": 450}
+        ]
+    },
+    {
+        "setId": 6,
+        "scores": [
+            { "username": "Rob", "score": 430},
+            { "username": "Mike", "score": 440},
+            { "username": "Emily", "score": 455},
+            { "username": "Harry", "score": 467},
+            { "username": "Mike", "score": 473}
+        ]
+    },
+    {
+        "setId": 7,
+        "scores": [
+            { "username": "Ryan", "score": 490},
+            { "username": "Clive", "score": 500},
+            { "username": "Janine", "score": 521},
+            { "username": "Claire", "score": 532},
+            { "username": "Tyler", "score": 550}
+        ]
+    },
+    {
+        "setId": 8,
+        "scores": [
+            { "username": "Harry", "score": 204},
+            { "username": "Sam", "score": 231},
+            { "username": "Nigel", "score": 246},
+            { "username": "Claire", "score": 305},
+            { "username": "Zara", "score": 310}
+        ]
+    }
+]

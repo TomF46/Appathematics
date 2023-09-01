@@ -22,7 +22,7 @@
     {
         "setId": 3,
         "scores": [
-            { "username": "Mark", "score": 290},
+            { "username": "Mark H", "score": 290},
             { "username": "Ed", "score": 295},
             { "username": "Emily", "score": 321},
             { "username": "Rita", "score": 333},
@@ -32,7 +32,7 @@
     {
         "setId": 4,
         "scores": [
-            { "username": "Jen", "score": 323},
+            { "username": "Jenny", "score": 323},
             { "username": "Todd", "score": 340},
             { "username": "Louise", "score": 365},
             { "username": "Karen", "score": 377},
@@ -67,16 +67,6 @@
             { "username": "Janine", "score": 521},
             { "username": "Claire", "score": 532},
             { "username": "Tyler", "score": 550}
-        ]
-    },
-    {
-        "setId": 8,
-        "scores": [
-            { "username": "Harry", "score": 204},
-            { "username": "Sam", "score": 231},
-            { "username": "Nigel", "score": 246},
-            { "username": "Claire", "score": 305},
-            { "username": "Zara", "score": 310}
         ]
     }
 ]

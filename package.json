@@ -1,7 +1,7 @@
 {
   "name": "appathematics",
   "private": true,
-  "homepage": "https://tomf46.github.io/Appathematics-react",
+  "homepage": "https://tomf46.github.io/Appathematics",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

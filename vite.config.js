@@ -5,7 +5,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: `/Appathematics-react/`,
+  base: `/Appathematics/`,
   plugins: [
     react(),
     VitePWA({ 
@@ -22,20 +22,14 @@ export default defineConfig({
         theme_color: '#219ff4',
         icons: [
           {
-            src: '/img/icons/android-chrome-192x192.png',
+            src: '/Appathematics/img/icons/icon-192x192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/img/icons/android-chrome-512x512.png',
+            src: '/Appathematics/img/icons/icon-512x512.png',
             sizes: '512x512',
             type: 'image/png'
-          },
-          {
-            src: '/img/icons/maskable_icon.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'any maskable'
           }
         ]
       }

@@ -1,9 +1,12 @@
-import configuration from "../../config/configuration.json";
-import initialHighScores from "../../config/initialHighScores.json";
+
+import configurationProd from "../../config/prod/configuration.json"
+import configurationDev from "../../config/dev/configuration.dev.json"
+import initialHighScoresProd from "../../config/prod/initialHighScores.json"
+import initialHighScoresDev from "../../config/dev/initialHighScores.dev.json"
 
 export default {
-    configuration: configuration,
+    configuration: import.meta.env.PROD ? configurationProd : configurationDev,
     gameInProgress: false,
     timer: null,
-    highScores: initialHighScores
+    highScores: import.meta.env.PROD ? initialHighScoresProd : initialHighScoresDev,
 }

@@ -1,0 +1,152 @@
+{
+    "questionSets": [
+      {
+        "id" : 1,
+        "name": "33 Questions",
+        "numberOfQuestions": 33,
+        "operands": {
+          "multiplication": {
+            "chance": 0.33
+          },
+          "division": {
+            "chance": 0
+          },
+          "addition": {
+            "chance": 0.33
+          },
+          "subtraction": {
+            "chance": 0.33
+          }
+        },
+        "includedNumbers": [2, 3, 5, 10],
+        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+      },
+      {
+        "id" : 2,
+        "name": "44 Questions",
+        "numberOfQuestions": 44,
+        "operands": {
+          "multiplication": {
+            "chance": 0.7
+          },
+          "division": {
+            "chance": 0
+          },
+          "addition": {
+            "chance": 0.15
+          },
+          "subtraction": {
+            "chance": 0.15
+          }
+        },
+        "includedNumbers": [2, 3, 4, 5, 6, 10],
+        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+      },
+      {
+        "id" : 3,
+        "name": "55 Questions",
+        "numberOfQuestions": 55,
+        "operands": {
+          "multiplication": {
+            "chance": 0.7
+          },
+          "division": {
+            "chance": 0
+          },
+          "addition": {
+            "chance": 0.15
+          },
+          "subtraction": {
+            "chance": 0.15
+          }
+        },
+        "includedNumbers": [2, 3, 4, 5, 6, 7, 8, 10],
+        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+      },
+      {
+        "id" : 4,
+        "name": "66 Questions",
+        "numberOfQuestions": 66,
+        "operands": {
+          "multiplication": {
+            "chance": 1
+          },
+          "division": {
+            "chance": 0
+          },
+          "addition": {
+            "chance": 0
+          },
+          "subtraction": {
+            "chance": 0
+          }
+        },
+        "includedNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+      },
+      {
+        "id" : 5,
+        "name": "77 Questions",
+        "numberOfQuestions": 77,
+        "operands": {
+          "multiplication": {
+            "chance": 0.5
+          },
+          "division": {
+            "chance": 0.3
+          },
+          "addition": {
+            "chance": 0.1
+          },
+          "subtraction": {
+            "chance": 0.1
+          }
+        },
+        "includedNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+      },
+      {
+        "id" : 6,
+        "name": "88 Questions",
+        "numberOfQuestions": 88,
+        "operands": {
+          "multiplication": {
+            "chance": 0.6
+          },
+          "division": {
+            "chance": 0.2
+          },
+          "addition": {
+            "chance": 0.1
+          },
+          "subtraction": {
+            "chance": 0.1
+          }
+        },
+        "includedNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+      },
+      {
+        "id" : 7,
+        "name": "99 Questions",
+        "numberOfQuestions": 99,
+        "operands": {
+          "multiplication": {
+            "chance": 0.75
+          },
+          "division": {
+            "chance": 0.25
+          },
+          "addition": {
+            "chance": 0
+          },
+          "subtraction": {
+            "chance": 0
+          }
+        },
+        "includedNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+      }
+    ]
+  }
+  
