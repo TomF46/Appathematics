@@ -5,7 +5,7 @@ const TextInput = ({ name, label, onChange, placeholder, value, required, error 
         <div className="field">
             {label &&
                 <label
-                    className="block mb-1 font-bold text-xs text-primary"
+                    className="block mb-1 font-bold text-xs text-primary text-center"
                     htmlFor={name}
                 >
                     {label}
@@ -15,7 +15,7 @@ const TextInput = ({ name, label, onChange, placeholder, value, required, error 
                 <input
                     type="text"
                     name={name}
-                    className="border border-gray-500 focus:outline-none focus:border-primary p-2 w-full rounded"
+                    className="border border-gray-500 focus:outline-none focus:border-primary p-2 w-full rounded text-center"
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}

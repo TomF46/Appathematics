@@ -35,8 +35,8 @@ function AddHighScore({game, score, onScoreSubmitted}) {
     }
 
     return(
-        <div className="grid grid-cols-12">
-            <div className="col-span-12">
+        <div className="grid grid-cols-12 my-4">
+            <div className="col-span-8 col-start-3 lg:col-span-6 lg:col-start-4">
                 <TextInput
                     name="name"
                     label="Name"
