@@ -19,7 +19,7 @@ function Header({gameInProgress}) {
     }
   }
   return (
-    <nav className="bg-primary px-4 py-4 shadow-lg relative">
+    <nav className="sticky top-0 bg-primary px-4 py-4 shadow-lg relative">
       {pathname != "/" && (
         <div className="back-button">
           <Link to={"/"}>
