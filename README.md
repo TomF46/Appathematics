@@ -1,8 +1,15 @@
-# React + Vite
+# Appathematics
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Appathematics is a PWA (progressive web app) which allows you to race against the clock to answer randomly generated question sets of addition, subtraction, multiplication, and division of varying length and difficulty.
 
-Currently, two official plugins are available:
+This application is designed to work across multiple viewpoints and devices but is best enjoyed as a installed pwa on a device which supports PWAs fully which gives you an app icon on your home screen, and allows you to use it in offline mode.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Created using the  framework and implementing the following technolgies
+
+- React
+- Tailwind CSS
+- Vite build system
+- Service workers for offline PWA implemention
+- Manifest.json file for PWA feature
+- Redux state management With Immer
+- PostCss
