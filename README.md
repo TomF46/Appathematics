@@ -13,3 +13,4 @@ Created using the  framework and implementing the following technolgies
 - Manifest.json file for PWA feature
 - Redux state management With Immer
 - PostCss
+- Testing using Vitest
