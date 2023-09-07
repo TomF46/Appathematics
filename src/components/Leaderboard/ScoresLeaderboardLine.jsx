@@ -4,7 +4,7 @@ import { convertHundredthsToReadable } from "../../services/timerService";
 function ScoresLeaderboardLine({score}) {
     const readableTime = convertHundredthsToReadable(score.score);
     return (
-        <tr>
+        <tr role="table-row">
             <td>{score.username}</td>
             <td>{score.score}</td>
             <td>
