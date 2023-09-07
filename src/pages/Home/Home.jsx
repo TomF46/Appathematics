@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../assets/logo.webp";
-import SetSelect from "../components/SetSelect";
+import logo from "../../assets/logo.webp";
+import SetSelect from "../../components/SetSelect";
 
 function Home() {
     const navigate = useNavigate();

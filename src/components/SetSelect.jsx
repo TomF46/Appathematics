@@ -33,11 +33,12 @@ function SetSelect({onSetSelected, autoSelectMode}) {
               onChange={onChange}
               id="custom-select"
               className="mx-auto"
+              role="select"
           >
               {questionSets &&
                   questionSets.map((s, i) => {
                       return (
-                          <option key={i} value={s.id}>
+                          <option key={i} value={s.id} role="option">
                               {s.name}
                           </option>
                       );

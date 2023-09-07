@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import TextInput from "./TextInput";
+import TextInput from "../Inputs/TextInput";
 import { useDispatch, useSelector } from "react-redux";
-import gameActions from "../redux/actions/gameActions";
+import gameActions from "../../redux/actions/gameActions";
 
 function AddHighScore({game, score, onScoreSubmitted}) {
     const highScores = useSelector((state) => state.game.highScores);

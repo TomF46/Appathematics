@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, useRef } from "react";
-import QuestionsService from "../services/questionService";
-import Methods from "../services/methods.enum";
-import VirtualKeyboard from "../components/VirtualKeyboard";
-import AnswersService from "../services/answerService";
-import gameStates from "../services/gameStates.enum";
-import Summary from "../components/Summary";
-import gameActions from "../redux/actions/gameActions";
+import QuestionsService from "../../services/questionService";
+import Methods from "../../services/methods.enum";
+import VirtualKeyboard from "../../components/Inputs/VirtualKeyboard";
+import AnswersService from "../../services/answerService";
+import gameStates from "../../services/gameStates.enum";
+import Summary from "../../components/Summary/Summary";
+import gameActions from "../../redux/actions/gameActions";
 
 function Play() {
     const { id } = useParams();
@@ -58,11 +58,7 @@ function Play() {
         set.operands)
       setQuestions(qs);
     }
-
-    function onInputChange(event){
-      // console.log(event);
-    }
-
+    
     function getOperator(method){
       if (method == Methods.Multiplication) return "x";
       if (method == Methods.Division) return "÷";
@@ -149,7 +145,6 @@ function Play() {
                     disabled
                     ref={inputRef}
                     value={currentAnswer}
-                    onChange={onInputChange}
                     maxLength="4"
                     className={`play-input ${inputClass}`}
                   />

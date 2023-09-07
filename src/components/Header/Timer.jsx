@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import gameActions from "../redux/actions/gameActions";
-import { convertHundredthsToReadable } from "../services/timerService";
+import gameActions from "../../redux/actions/gameActions";
+import { convertHundredthsToReadable } from "../../services/timerService";
 import { useLocation } from "react-router-dom";
 
 function Timer() {

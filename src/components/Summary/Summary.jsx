@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import { convertHundredthsToReadable } from "../services/timerService";
+import { convertHundredthsToReadable } from "../../services/timerService";
 import AddHighScore from "./AddHighScore";
 import { useSelector } from "react-redux";
-import Leaderboard from "./Leaderboard";
+import Leaderboard from "../Leaderboard/Leaderboard";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 

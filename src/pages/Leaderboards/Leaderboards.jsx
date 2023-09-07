@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import SetSelect from "../components/SetSelect";
+import SetSelect from "../../components/SetSelect";
 import { useState } from "react";
-import Leaderboard from "../components/Leaderboard";
+import Leaderboard from "../../components/Leaderboard/Leaderboard";
 
 function Leaderboards() {
     const highScores = useSelector((state) => state.game.highScores);

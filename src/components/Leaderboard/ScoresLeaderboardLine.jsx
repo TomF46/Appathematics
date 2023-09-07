@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { convertHundredthsToReadable } from "../services/timerService";
+import { convertHundredthsToReadable } from "../../services/timerService";
 
 function ScoresLeaderboardLine({score}) {
     const readableTime = convertHundredthsToReadable(score.score);
