@@ -48,6 +48,19 @@ describe("Set select tests", () => {
         await user.selectOptions(screen.getByRole("select"), "2");
         expect(screen.getByRole("option", { name: "44 Questions" }).selected).toBe(true);
     })
+
+    test("Can see select button if set is selected.", async () => {
+
+      render(
+          <ComponentTestBed>
+            <SetSelect onSetSelected={()=>{}} />
+          </ComponentTestBed>
+      );
+
+      const user = userEvent.setup();
+      await user.selectOptions(screen.getByRole("select"), "2");
+      expect(screen.getByRole("button", { name: "Select" })).toBeDefined();
+  })
 })
 
 
