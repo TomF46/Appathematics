@@ -1,8 +1,9 @@
-import {describe, expect, test} from 'vitest';
+import {describe, expect, test, vi} from 'vitest';
 import userEvent from "@testing-library/user-event";
 import {render, screen} from '@testing-library/react';
 import ComponentTestBed from '../tests/ComponentTestBed';
 import SetSelect from './SetSelect';
+import questionSets from '../config/dev/configuration.dev.json';
 
 describe("Set select tests", () => {
     test("should show select", () => {
@@ -61,6 +62,22 @@ describe("Set select tests", () => {
       await user.selectOptions(screen.getByRole("select"), "2");
       expect(screen.getByRole("button", { name: "Select" })).toBeDefined();
   })
+
+  test("function is called if select button is called", async () => {
+    
+    const handleSetSelected = vi.fn();  
+    
+    render(
+      <ComponentTestBed>
+        <SetSelect onSetSelected={handleSetSelected} />
+      </ComponentTestBed>
+    );
+  
+    const user = userEvent.setup();
+    await user.click(screen.getByRole("button", { name: "Select" }));
+    expect(handleSetSelected).toBeCalledTimes(1);
+    expect(handleSetSelected).toBeCalledWith(questionSets.questionSets[0]);
+})
 })
 
 
