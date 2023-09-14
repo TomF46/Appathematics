@@ -10,6 +10,8 @@ class AnswersService {
       return this.checkAddition(userAnswer, firstNumber, secondNumber);
     if (method == Methods.Subtraction)
       return this.checkSubtraction(userAnswer, firstNumber, secondNumber);
+    if (method == Methods.Power)
+      return this.checkPower(userAnswer, firstNumber, secondNumber);
     return this.checkMultiplication(userAnswer, firstNumber, secondNumber);
   }
 
@@ -30,6 +32,11 @@ class AnswersService {
 
   checkSubtraction(userAnswer, firstNumber, secondNumber) {
     const answer = firstNumber - secondNumber;
+    return userAnswer == answer;
+  }
+
+  checkPower(userAnswer, firstNumber, secondNumber) {
+    const answer = Math.pow(firstNumber, secondNumber);
     return userAnswer == answer;
   }
 }

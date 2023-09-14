@@ -16,6 +16,9 @@
           },
           "subtraction": {
             "chance": 0.33
+          },
+          "power": {
+            "chance": 0
           }
         },
         "includedNumbers": [2, 3, 5, 10],
@@ -37,6 +40,9 @@
           },
           "subtraction": {
             "chance": 0.15
+          },
+          "power": {
+            "chance": 0
           }
         },
         "includedNumbers": [2, 3, 4, 5, 6, 10],
@@ -58,6 +64,9 @@
           },
           "subtraction": {
             "chance": 0.15
+          },
+          "power": {
+            "chance": 0
           }
         },
         "includedNumbers": [2, 3, 4, 5, 6, 7, 8, 10],
@@ -78,6 +87,9 @@
             "chance": 0
           },
           "subtraction": {
+            "chance": 0
+          },
+          "power": {
             "chance": 0
           }
         },
@@ -100,6 +112,9 @@
           },
           "subtraction": {
             "chance": 0.1
+          },
+          "power": {
+            "chance": 0
           }
         },
         "includedNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
@@ -121,6 +136,9 @@
           },
           "subtraction": {
             "chance": 0.1
+          },
+          "power": {
+            "chance": 0
           }
         },
         "includedNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
@@ -141,6 +159,9 @@
             "chance": 0
           },
           "subtraction": {
+            "chance": 0
+          },
+          "power": {
             "chance": 0
           }
         },
@@ -163,10 +184,37 @@
           },
           "subtraction": {
             "chance": 0.33
+          },
+          "power": {
+            "chance": 0
           }
         },
         "includedNumbers": [2, 3, 5, 10],
         "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+      },
+      {
+        "id" : 9,
+        "name": "Powers",
+        "numberOfQuestions": 5,
+        "operands": {
+          "multiplication": {
+            "chance": 0
+          },
+          "division": {
+            "chance": 0
+          },
+          "addition": {
+            "chance": 0
+          },
+          "subtraction": {
+            "chance": 0
+          },
+          "power": {
+            "chance": 1
+          }
+        },
+        "includedNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        "secondaryNumbers": [2, 3]
       }
     ]
   }

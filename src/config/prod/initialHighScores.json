@@ -68,5 +68,15 @@
             { "username": "Claire", "score": 43572},
             { "username": "Tyler", "score": 53670}
         ]
+    },
+    {
+        "setId": 8,
+        "scores": [
+            { "username": "Jenny", "score": 4000},
+            { "username": "Aaron", "score": 4680},
+            { "username": "Madison", "score": 5730},
+            { "username": "Aretha", "score": 6721},
+            { "username": "Jason", "score": 8121}
+        ]
     }
 ]

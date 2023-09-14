@@ -58,8 +58,11 @@ class QuestionsService {
       return question;
     }
 
+    // Never flip subtraction or power units
+    if(question.method == Methods.Subtraction || question.method == Methods.Power) return question;
+
     //50% chance of flipping factors
-    if (this.shouldRandomise() && question.method != Methods.Subtraction)
+    if (this.shouldRandomise())
       return this.flipFactors(
         question.firstNumber,
         question.secondNumber,
@@ -73,13 +76,15 @@ class QuestionsService {
       operands.multiplication,
       operands.division,
       operands.addition,
-      operands.subtraction
+      operands.subtraction,
+      operands.power
     ];
 
     const method = this.getMethodUsingOdds(methods);
     if (method == operands.multiplication) return Methods.Multiplication;
     if (method == operands.addition) return Methods.Addition;
     if (method == operands.subtraction) return Methods.Subtraction;
+    if (method == operands.power) return Methods.Power;
 
     return Methods.Division;
   }

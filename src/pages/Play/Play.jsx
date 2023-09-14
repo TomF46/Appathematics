@@ -64,6 +64,7 @@ function Play() {
       if (method == Methods.Division) return "÷";
       if (method == Methods.Addition) return "+";
       if (method == Methods.Subtraction) return "-";
+      if (method == Methods.Power) return "^";
     }
 
     function handleKeyClicked(key){
@@ -83,7 +84,7 @@ function Play() {
         return;
       }
 
-      if(currentAnswer.length >=3) return;
+      if(currentAnswer.length >=4) return;
 
       setCurrentAnswer(currentAnswer + String(key));
     }
