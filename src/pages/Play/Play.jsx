@@ -8,6 +8,8 @@ import AnswersService from "../../services/answerService";
 import gameStates from "../../services/gameStates.enum";
 import Summary from "../../components/Summary/Summary";
 import gameActions from "../../redux/actions/gameActions";
+import PowerQuestionFormat from "../../components/QuestionFormats/PowerQuestionFormat";
+import RootQuestionFormat from "../../components/QuestionFormats/RootQuestionFormat";
 
 function Play() {
     const { id } = useParams();
@@ -65,6 +67,7 @@ function Play() {
       if (method == Methods.Addition) return "+";
       if (method == Methods.Subtraction) return "-";
       if (method == Methods.Power) return "^";
+      if (method == Methods.Root) return `&#8730;`
     }
 
     function handleKeyClicked(key){
@@ -122,6 +125,17 @@ function Play() {
       setGameState(gameStates.Summary);
     }
 
+    function renderQuestion(question){
+      switch(question.method) {
+        case Methods.Power:
+          return <PowerQuestionFormat question={question} />;
+        case Methods.Root:
+          return <RootQuestionFormat question={question} />;
+        default:
+          return <p className="text-center text-xl text-primary">{question.firstNumber} {getOperator(question.method)} {question.secondNumber}</p>;
+      }
+    }
+
     return (
       <>
       {gameState == gameStates.Play && (
@@ -137,7 +151,7 @@ function Play() {
                 </div>
                 {activeQuestion && (
                   <div className="col-span-12">
-                    <p className="text-center text-xl text-primary">{activeQuestion.firstNumber} {getOperator(activeQuestion.method)} {activeQuestion.secondNumber}</p>
+                    {renderQuestion(activeQuestion)}
                   </div>
                 )}
                 <div className="col-span-12 justify-self-center my-4">

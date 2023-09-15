@@ -58,8 +58,13 @@ class QuestionsService {
       return question;
     }
 
-    // Never flip subtraction or power units
-    if(question.method == Methods.Subtraction || question.method == Methods.Power) return question;
+    if (question.method == Methods.Root) {
+      question = this.formatRoot(question);
+      return question;
+    }
+
+    // Never flip subtraction/ root or power units
+    if(question.method == Methods.Subtraction || question.method == Methods.Power || question.method == Methods.Root) return question;
 
     //50% chance of flipping factors
     if (this.shouldRandomise())
@@ -77,7 +82,8 @@ class QuestionsService {
       operands.division,
       operands.addition,
       operands.subtraction,
-      operands.power
+      operands.power,
+      operands.root
     ];
 
     const method = this.getMethodUsingOdds(methods);
@@ -85,6 +91,7 @@ class QuestionsService {
     if (method == operands.addition) return Methods.Addition;
     if (method == operands.subtraction) return Methods.Subtraction;
     if (method == operands.power) return Methods.Power;
+    if (method == operands.root) return Methods.Root;
 
     return Methods.Division;
   }
@@ -104,6 +111,12 @@ class QuestionsService {
     const tempN1 = question.firstNumber;
     question.firstNumber = question.secondNumber;
     question.secondNumber = tempN1;
+    return question;
+  }
+
+  formatRoot(question) {
+    const firstValue = Math.pow(question.firstNumber, question.secondNumber);
+    question.firstNumber = firstValue;
     return question;
   }
 

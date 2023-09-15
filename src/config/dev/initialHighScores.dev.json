@@ -82,11 +82,21 @@
     {
         "setId": 9,
         "scores": [
-            { "username": "Harry", "score": 1500},
-            { "username": "Sam", "score": 900},
-            { "username": "Nigel", "score": 1250},
-            { "username": "Claire", "score": 1670},
-            { "username": "Zara", "score": 2210}
+            { "username": "Hattie", "score": 1500},
+            { "username": "Samuel", "score": 900},
+            { "username": "Muhammed", "score": 1250},
+            { "username": "Ashton", "score": 1670},
+            { "username": "Ben", "score": 2210}
+        ]
+    },
+    {
+        "setId": 10,
+        "scores": [
+            { "username": "Harold", "score": 1500},
+            { "username": "Alf", "score": 900},
+            { "username": "Nimah", "score": 1250},
+            { "username": "Cassandra", "score": 1670},
+            { "username": "Louise", "score": 2210}
         ]
     }
 ]

@@ -12,6 +12,8 @@ class AnswersService {
       return this.checkSubtraction(userAnswer, firstNumber, secondNumber);
     if (method == Methods.Power)
       return this.checkPower(userAnswer, firstNumber, secondNumber);
+    if (method == Methods.Root)
+      return this.checkRoot(userAnswer, firstNumber, secondNumber);
     return this.checkMultiplication(userAnswer, firstNumber, secondNumber);
   }
 
@@ -38,6 +40,11 @@ class AnswersService {
   checkPower(userAnswer, firstNumber, secondNumber) {
     const answer = Math.pow(firstNumber, secondNumber);
     return userAnswer == answer;
+  }
+
+  checkRoot(userAnswer, firstNumber, secondNumber) {
+    const answer = Math.pow(firstNumber, 1/secondNumber);
+    return userAnswer == Math.round(answer);
   }
 }
 

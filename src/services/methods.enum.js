@@ -3,7 +3,8 @@ const Methods = Object.freeze({
     Division: 1,
     Addition: 2,
     Subtraction: 3,
-    Power: 4
+    Power: 4,
+    Root: 5
   });
   
   export default Methods;

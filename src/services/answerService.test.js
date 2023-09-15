@@ -64,4 +64,14 @@ describe('Answer service', () => {
         const isCorrect = answersService.checkIfCorrect(6, 3, 2, Methods.Power);
         expect(isCorrect).toBeFalsy();
       });
+
+      test("Check if correct should return true if it is correct, Root", () => {
+        const isCorrect = answersService.checkIfCorrect(10, 1000, 3, Methods.Root);
+        expect(isCorrect).toBeTruthy();
+      });
+
+      test("Check if correct should return false if it is incorrect, Power", () => {
+        const isCorrect = answersService.checkIfCorrect(7, 64, 2, Methods.Root);
+        expect(isCorrect).toBeFalsy();
+      });
 })

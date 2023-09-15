@@ -23,7 +23,7 @@ describe("Set select tests", () => {
             <SetSelect onSetSelected={()=>{}} />
           </ComponentTestBed>
         );
-        expect(screen.getAllByRole("option")).length(8);
+        expect(screen.getAllByRole("option").length(10));
     })
 
     test("First option should be pre selected", () => {
