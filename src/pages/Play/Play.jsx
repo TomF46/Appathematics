@@ -24,7 +24,7 @@ function Play() {
     const [questions, setQuestions] = useState(null);
     const [questionIndex, setQuestionIndex] = useState(null);
     const [activeQuestion, setActiveQuestion] = useState(null);
-    const [currentAnswer, setCurrentAnswer] = useState(null);
+    const [currentAnswer, setCurrentAnswer] = useState('');
     const [inputClass, setInputClass] = useState("");
     const [score, setScore] = useState(null);
 
@@ -106,7 +106,7 @@ function Play() {
     }
 
     function handleCorrectAnswer(){
-      setCurrentAnswer(0);
+      setCurrentAnswer('');
       setQuestionIndex(questionIndex + 1);
     }
 

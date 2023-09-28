@@ -1,4 +1,6 @@
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Home/Home";
 import Play from "./pages/Play/Play";
 import Leaderboards from "./pages/Leaderboards/Leaderboards";
@@ -18,6 +20,7 @@ const App = () => {
         </Routes>
       </div>
     </div>
+    <ToastContainer autoClose={3000} hideProgressBar theme="colored" />
     </>
   )
 };

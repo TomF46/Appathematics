@@ -25,12 +25,17 @@ function Summary({game, score}) {
             <div className="text-center">
                 <Link to={"/"} className="link-button px-8 py-2 my-4 bg-primary rounded-full text-3xl text-white text-center mx-auto">Play again!</Link>
             </div>
-            {!hasSubmitted && (
-                <AddHighScore game={game} score={score} onScoreSubmitted={() => setHasSubmitted(true)} />
-            )}
             {highScores && (
                 <div className="my-4 grid grid-cols-12">
-                    <div className="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-4 lg:col-start-5">
+                    <div className="col-span-12 mt-4">
+                        <h1 className="text-4xl text-center text-primary">High scores</h1>
+                    </div>
+                    <div className="col-span-12">
+                        {!hasSubmitted && (
+                            <AddHighScore game={game} score={score} onScoreSubmitted={() => setHasSubmitted(true)} />
+                        )}
+                    </div>
+                    <div className="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-4 lg:col-start-5 my-4">
                         <Leaderboard scores={highScores} />
                     </div>
                 </div>
