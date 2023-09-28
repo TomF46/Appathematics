@@ -9,7 +9,6 @@ function AddHighScore({game, score, onScoreSubmitted}) {
     const highScores = useSelector((state) => state.game.highScores);
     const dispatch = useDispatch()
     const [username, setUsername] = useState("");
-    const error = useState(null)
 
     function onNameChange(event){
         const { value } = event.target;
@@ -46,11 +45,10 @@ function AddHighScore({game, score, onScoreSubmitted}) {
                     label="Name"
                     value={username}
                     onChange={onNameChange}
-                    error={error}
                     required={true}
                 />
             </div>
-            <div className="col-span-12 justify-self-center">
+            <div className="col-span-12 justify-self-center mt-2">
                 <button onClick={handleSubmit} className="px-8 py-2 bg-primary rounded-full text-2xl text-white">Submit</button>
             </div>
         </div>

@@ -4,7 +4,7 @@ export const loadState = () => {
     const highScores = localStorage.getItem("highScores");
     let highScoresState = highScores == null ? null : JSON.parse(highScores);
     let state = initialState;
-    if (highScoresState != null) state.highScores = highScoresState;
+    if (highScoresState != null) state.game.highScores = highScoresState;
     return state;
 };
 

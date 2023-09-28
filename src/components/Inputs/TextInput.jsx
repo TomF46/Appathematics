@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const TextInput = ({ name, label, onChange, placeholder, value, required, error }) => {
+const TextInput = ({ name, label, onChange, placeholder, value, required}) => {
     return (
         <div className="field">
             {label &&
@@ -22,9 +22,6 @@ const TextInput = ({ name, label, onChange, placeholder, value, required, error 
                     required={required}
                     autoComplete="off"
                 />
-                {error && (
-                    <div className="text-red-500 text-xs p-1 mt-2">{error}</div>
-                )}
             </div>
         </div>
     );
@@ -36,8 +33,7 @@ TextInput.propTypes = {
     onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
     value: PropTypes.string,
-    required: PropTypes.bool.isRequired,
-    error: PropTypes.string
+    required: PropTypes.bool.isRequired
 };
 
 export default TextInput;
