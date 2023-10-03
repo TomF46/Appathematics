@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 
-const TextInput = ({ name, label, onChange, placeholder, value, required, centerText}) => {
+const NumberInput = ({ name, label, onChange, placeholder, value}) => {
     return (
         <div className="field">
             {label &&
                 <label
-                    className={`block mb-1 font-bold text-xs text-primary ${centerText ? "text-center" : ""}`}
+                    className="block mb-1 font-bold text-xs text-primary"
                     htmlFor={name}
                 >
                     {label}
@@ -13,28 +13,25 @@ const TextInput = ({ name, label, onChange, placeholder, value, required, center
             }
             <div className="control">
                 <input
-                    type="text"
+                    type="number"
                     name={name}
-                    className={`border border-gray-500 focus:outline-none focus:border-primary p-2 w-full rounded ${centerText ? "text-center" : ""}`}
+                    className="border border-gray-500 focus:outline-none focus:border-primary p-2 w-full bg-backgroundOffset2 rounded"
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}
-                    required={required}
-                    autoComplete="off"
+                    required
                 />
             </div>
         </div>
     );
 };
 
-TextInput.propTypes = {
+NumberInput.propTypes = {
     name: PropTypes.string.isRequired,
     label: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
-    value: PropTypes.string,
-    required: PropTypes.bool.isRequired,
-    centerText: PropTypes.bool
+    value: PropTypes.number
 };
 
-export default TextInput;
+export default NumberInput;

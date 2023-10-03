@@ -12,6 +12,8 @@ function Header() {
         return "Appathematics"
       case "/leaderboards":
         return "Leaderboards"
+      case "/custom":
+        return "Custom sets"
       default:
         if(pathname.includes("/play") && !gameInProgress) return "Summary";
         return "Appathematics"

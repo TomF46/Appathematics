@@ -46,6 +46,7 @@ function AddHighScore({game, score, onScoreSubmitted}) {
                     value={username}
                     onChange={onNameChange}
                     required={true}
+                    centerText
                 />
             </div>
             <div className="col-span-12 justify-self-center mt-2">

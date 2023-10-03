@@ -5,6 +5,8 @@ import Home from "./pages/Home/Home";
 import Play from "./pages/Play/Play";
 import Leaderboards from "./pages/Leaderboards/Leaderboards";
 import Header from "./components/Header/Header";
+import ManageCustomSets from "./pages/Custom/Manage/ManageCustomSets";
+import ManageCustomSet from "./pages/Custom/Manage/ManageCustomSet";
 
 const App = () => {
   return (
@@ -16,6 +18,9 @@ const App = () => {
           <Route path="/" element={<Home />}/>
           <Route path="games/:id/play" element={<Play />}/>
           <Route path="/leaderboards" element={<Leaderboards />}/>
+          <Route path="/custom" element={<ManageCustomSets />} />
+          <Route path="/custom/manage" element={<ManageCustomSet />} />
+          <Route path="/custom/:id/manage" element={<ManageCustomSet />} />
           <Route path="*" element={<Home />}/>
         </Routes>
       </div>

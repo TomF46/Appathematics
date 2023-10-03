@@ -41,6 +41,15 @@ export const loadCustomSets = () => {
     return customQuestionSets ? JSON.parse(customQuestionSets) : null;
 }
 
+export const storeCustomSets = (sets) => {
+    try {
+        const serializedSets = JSON.stringify(sets);
+        localStorage.setItem("customQuestionSets", serializedSets);
+    } catch {
+        // ignore write errors
+    }
+}
+
 const mergeQuestionSets = (sets, customSets) => {
     return sets.concat(customSets);
 }
