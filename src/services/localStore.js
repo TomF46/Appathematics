@@ -1,10 +1,21 @@
 import initialState from "../redux/reducers/initialState";
 
 export const loadState = () => {
+    let state = initialState;
+
+    //Load and merge custom sets with hard coded sets
+    const customQuestionSets = loadCustomSets();
+    if(customQuestionSets != null){
+        let sets = mergeQuestionSets(state.game.configuration.questionSets, customQuestionSets);
+        console.log(sets);
+        state.game.configuration.questionSets = sets;
+    }
+
+    //Load High Scores
     const highScores = localStorage.getItem("highScores");
     let highScoresState = highScores == null ? null : JSON.parse(highScores);
-    let state = initialState;
     if (highScoresState != null) state.game.highScores = highScoresState;
+
     return state;
 };
 
@@ -24,3 +35,12 @@ export const removehighScores = () => {
         //
     }
 };
+
+export const loadCustomSets = () => {
+    const customQuestionSets = localStorage.getItem("customQuestionSets");
+    return customQuestionSets ? JSON.parse(customQuestionSets) : null;
+}
+
+const mergeQuestionSets = (sets, customSets) => {
+    return sets.concat(customSets);
+}
