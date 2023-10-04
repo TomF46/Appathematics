@@ -36,7 +36,11 @@ function Summary({game, score}) {
                         )}
                     </div>
                     <div className="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-4 lg:col-start-5 my-4">
-                        <Leaderboard scores={highScores} />
+                        {highScores.length > 0 ? (
+                            <Leaderboard scores={highScores} />
+                        ) : (
+                            <p className="text-center text-primary text-xl">Be the first entry on the leaderboard by submitted now.</p>
+                        )}
                     </div>
                 </div>
             )}

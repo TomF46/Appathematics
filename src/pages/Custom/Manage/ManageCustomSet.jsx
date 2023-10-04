@@ -28,7 +28,7 @@ function ManageCustomSet() {
         if(id){
             handleSetUpdate(questionSet)
         } else {
-            questionSet.id = questionSets.length + 1;
+            questionSet.id = Number(questionSets.length + 1);
             handleSetCreate(questionSet);
         }
 

@@ -25,6 +25,9 @@ function Home() {
             </div>
             <SetSelect onSetSelected={handleSetSelected} autoSelectMode={false}/>
             <div className="text-center my-4">
+                <Link className="text-primary text-center underline" to={"/custom"}>Manage custom games</Link>
+            </div>
+            <div className="text-center my-4">
                 <Link className="text-primary text-center underline" to={"/leaderboards"}>View leaderboards</Link>
             </div>
         </>

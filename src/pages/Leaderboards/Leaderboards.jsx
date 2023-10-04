@@ -15,15 +15,22 @@ function Leaderboards() {
     return (
         <>
             <SetSelect onSetSelected={handleSetSelected} autoSelectMode={true} />
-            {scores && scores.length > 0 && (
-                <div className="my-4 grid grid-cols-12">
-                    <div className="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-4 lg:col-start-5">
-                        <Leaderboard scores={scores} />
+            {scores ? (
+                scores.length > 0 ? (
+                    <div className="my-4 grid grid-cols-12">
+                        <div className="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-4 lg:col-start-5">
+                            <Leaderboard scores={scores} />
+                        </div>
                     </div>
-                </div>
+                ) : (
+                    <p className="text-center text-primary text-xl">No scores have been submitted.</p>
+                )
+            ) : (
+                <p className="text-center text-primary text-xl">Loading leaderboard.</p>
             )}
         </>
     );
 }
 
 export default Leaderboards;
+

@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { loadCustomSets, storeCustomSets } from "./localStore"
+import { loadCustomSets, loadHighScores, savehighScores, storeCustomSets } from "./localStore"
 
 export const getCustomSets = () => {
     const sets = loadCustomSets();
@@ -81,7 +81,23 @@ export const handleSetUpdate = (set) => {
 }
 
 export const handleSetCreate = (set) => {
+    // Save set
     let sets = getCustomSets();
     sets.push(set);
     saveSets(sets);
+    createHighScoreEntryForSet(set);
+
+}
+
+const createHighScoreEntryForSet = (set) => {
+    let entry = {
+        setId: set.id,
+        scores: []
+    }
+
+    let highScores = loadHighScores();
+
+    if(highScores == null) highScores = [];
+    highScores.push(entry);
+    savehighScores(highScores);
 }

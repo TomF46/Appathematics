@@ -12,12 +12,21 @@ export const loadState = () => {
     }
 
     //Load High Scores
-    const highScores = localStorage.getItem("highScores");
-    let highScoresState = highScores == null ? null : JSON.parse(highScores);
-    if (highScoresState != null) state.game.highScores = highScoresState;
+    const highScores = loadHighScores();
+    if (highScores != null){
+        state.game.highScores = highScores
+    } else {
+        savehighScores(state.game.highScores);
+    }
 
     return state;
 };
+
+export const loadHighScores = () => {
+    const highScores = localStorage.getItem("highScores");
+    return highScores ? JSON.parse(highScores) : null;
+}
+
 
 export const savehighScores = highScores => {
     try {
