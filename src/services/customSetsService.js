@@ -37,13 +37,37 @@ export const handleQuestionNumberChange = (event, set) => {
 
 export const handleIncludedNumberAdded = (number, set) => {
     let updatedSet = { ...set};
+    let exists = updatedSet.includedNumbers.find(x => x == number);
+    if(exists){
+        toast.error("Number is already included.");
+        return updatedSet;
+    }
     updatedSet.includedNumbers.push(number);
+    return updatedSet;
+}
+
+export const handleIncludedNumberRemoved = (number, set) => {
+    let updatedSet = { ...set};
+    let index = updatedSet.includedNumbers.indexOf(number);
+    updatedSet.includedNumbers.splice(index, 1);
     return updatedSet;
 }
 
 export const handleSecondaryNumberAdded = (number, set) => {
     let updatedSet = { ...set};
+    let exists = updatedSet.secondaryNumbers.find(x => x == number);
+    if(exists){
+        toast.error("This secondary number is already included.");
+        return updatedSet;
+    }
     updatedSet.secondaryNumbers.push(number);
+    return updatedSet;
+}
+
+export const handleSecondaryNumberRemoved = (number, set) => {
+    let updatedSet = { ...set};
+    let index = updatedSet.secondaryNumbers.indexOf(number);
+    updatedSet.secondaryNumbers.splice(index, 1);
     return updatedSet;
 }
 

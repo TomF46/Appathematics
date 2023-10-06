@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams} from "react-router-dom";
 import { newQuestionSet } from "../../../tools/objectShapes";
-import { createHighScoreEntryForSet, getCustomSet, getDefaultSets, handleIncludedNumberAdded, handleNameChange, handleQuestionNumberChange, handleSecondaryNumberAdded, handleSetCreate, handleSetUpdate, setIsValid } from "../../../services/customSetsService";
+import { createHighScoreEntryForSet, getCustomSet, getDefaultSets, handleIncludedNumberAdded, handleIncludedNumberRemoved, handleNameChange, handleQuestionNumberChange, handleSecondaryNumberAdded, handleSecondaryNumberRemoved, handleSetCreate, handleSetUpdate, setIsValid } from "../../../services/customSetsService";
 import TextInput from "../../../components/Inputs/TextInput";
 import NumberInput from "../../../components/Inputs/NumberInput";
 import MultiNumberInput from "../../../components/Inputs/MultiNumberInput";
@@ -84,10 +84,10 @@ function ManageCustomSet() {
                             <OperatorInput set={questionSet} onOperatorsChanged={(updatedSet) => {handle(updatedSet)}} />
                         </div>
                         <div className="col-span-12 mb-2">
-                            <MultiNumberInput numbers={questionSet.includedNumbers} label="Included numbers" onNumberAdded={(number) => {setQuestionSet(handleIncludedNumberAdded(number, questionSet))}} />
+                            <MultiNumberInput numbers={questionSet.includedNumbers} label="Included numbers" onNumberAdded={(number) => {setQuestionSet(handleIncludedNumberAdded(number, questionSet))}} onNumberRemoved={(number) => {setQuestionSet(handleIncludedNumberRemoved(number, questionSet))}} />
                         </div>
                         <div className="col-span-12 mb-2">
-                            <MultiNumberInput numbers={questionSet.secondaryNumbers} label="Secondary numbers" onNumberAdded={(number) => {setQuestionSet(handleSecondaryNumberAdded(number, questionSet))}} />
+                            <MultiNumberInput numbers={questionSet.secondaryNumbers} label="Secondary numbers" onNumberAdded={(number) => {setQuestionSet(handleSecondaryNumberAdded(number, questionSet))}} onNumberRemoved={(number) => {setQuestionSet(handleSecondaryNumberRemoved(number, questionSet))}} />
                         </div>
                         <div className="col-span-12 justify-self-center mt-2">
                             <button onClick={handleSave} className="px-8 py-2 bg-primary rounded-full text-2xl text-white">Submit</button>
