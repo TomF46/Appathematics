@@ -17,6 +17,10 @@ import * as types from "./actionTypes";
 //     return { type: types.SET_HIGH_SCORES, scores };
 // }
 
+const setConfiguration = (config) => {
+    return { type: types.SET_CONFIGURATION, config};
+}
+
 const setGameInProgress = (status) => {
     return { type: types.SET_GAME_IN_PROGRESS, status };
 }
@@ -37,6 +41,7 @@ const setHighScoresSuccess = (scores) => {
 }
 
 export default {
+    setConfiguration,
     setGameInProgress,
     setTimer,
     setHighScores

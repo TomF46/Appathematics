@@ -4,6 +4,9 @@ import initialState from "./initialState";
 
 export default produce((draft = initialState, action) => {
     switch(action.type){
+        case types.SET_CONFIGURATION:
+            draft.configuration = action.config
+            return draft
         case types.SET_GAME_IN_PROGRESS:
             draft.gameInProgress = action.status
             return draft

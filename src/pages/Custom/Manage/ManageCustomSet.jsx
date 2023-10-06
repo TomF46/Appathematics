@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams} from "react-router-dom";
 import { newQuestionSet } from "../../../tools/objectShapes";
-import { getCustomSet, handleIncludedNumberAdded, handleNameChange, handleQuestionNumberChange, handleSecondaryNumberAdded, handleSetCreate, handleSetUpdate, setIsValid } from "../../../services/customSetsService";
+import { createHighScoreEntryForSet, getCustomSet, getDefaultSets, handleIncludedNumberAdded, handleNameChange, handleQuestionNumberChange, handleSecondaryNumberAdded, handleSetCreate, handleSetUpdate, setIsValid } from "../../../services/customSetsService";
 import TextInput from "../../../components/Inputs/TextInput";
 import NumberInput from "../../../components/Inputs/NumberInput";
 import MultiNumberInput from "../../../components/Inputs/MultiNumberInput";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import gameActions from "../../../redux/actions/gameActions";
 
 function ManageCustomSet() {
     const { id } = useParams();
     const navigate = useNavigate();
+    const dispatch = useDispatch()
     const questionSets = useSelector((state) => state.game.configuration.questionSets)
     const [questionSet, setQuestionSet] = useState({ ...newQuestionSet });
 
@@ -22,18 +24,30 @@ function ManageCustomSet() {
         }
     }, [id])
 
-    function handleSave(event){
+    async function handleSave(event){
         event.preventDefault();
         if (!setIsValid(questionSet)) return;
+        let sets = [];
         if(id){
-            handleSetUpdate(questionSet)
+            sets = await handleSetUpdate(questionSet)
         } else {
             questionSet.id = Number(questionSets.length + 1);
-            handleSetCreate(questionSet);
+            sets = await handleSetCreate(questionSet);
+            generateLeaderboardForCreatedSet(questionSet);
         }
+
+        // Update state so new set appears in dropdown.
+        const defaultSets = getDefaultSets();
+        const totalSets = defaultSets.concat(sets);
+        dispatch(gameActions.setConfiguration({questionSets: totalSets}));
 
         toast.success(`Set ${id ? "Updated" : "Created"}`);
         navigate("/custom");
+    }
+
+    async function generateLeaderboardForCreatedSet(set){
+        let scores = await createHighScoreEntryForSet(set);
+        dispatch(gameActions.setHighScores(scores));
     }
 
     return (

@@ -6,7 +6,7 @@ import initialHighScoresDev from "../../config/dev/initialHighScores.dev.json"
 
 export default {
     game: {
-        configuration: import.meta.env.PROD ? configurationProd : configurationDev,
+        configuration: import.meta.env.PROD ? { ...configurationProd} : { ...configurationDev},
         gameInProgress: false,
         timer: null,
         highScores: import.meta.env.PROD ? initialHighScoresProd : initialHighScoresDev,

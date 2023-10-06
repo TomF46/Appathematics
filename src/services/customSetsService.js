@@ -1,5 +1,11 @@
 import { toast } from "react-toastify";
 import { loadCustomSets, loadHighScores, savehighScores, storeCustomSets } from "./localStore"
+import configurationProd from "../config/prod/configuration.json";
+import configurationDev from "../config/dev/configuration.dev.json"
+
+export const getDefaultSets = () => {
+    return import.meta.env.PROD ?  [ ...configurationProd.questionSets] : [ ...configurationDev.questionSets];
+}
 
 export const getCustomSets = () => {
     const sets = loadCustomSets();
@@ -73,31 +79,38 @@ export const setIsValid = (set) => {
 }
 
 export const handleSetUpdate = (set) => {
-    let sets = getCustomSets();
-    let original = sets.find((item) => item.id == set.id);
-    let index = sets.indexOf(original);
-    sets[index] = set;
-    saveSets(sets);
+    return new Promise((resolve) => {
+        let sets = getCustomSets();
+        let original = sets.find((item) => item.id == set.id);
+        let index = sets.indexOf(original);
+        sets[index] = set;
+        saveSets(sets);
+        resolve(sets);
+    });
 }
 
 export const handleSetCreate = (set) => {
-    // Save set
-    let sets = getCustomSets();
-    sets.push(set);
-    saveSets(sets);
-    createHighScoreEntryForSet(set);
-
+    return new Promise((resolve) => {
+        // Save set
+        let sets = getCustomSets();
+        sets.push(set);
+        saveSets(sets);
+        resolve(sets);
+    });
 }
 
-const createHighScoreEntryForSet = (set) => {
-    let entry = {
-        setId: set.id,
-        scores: []
-    }
-
-    let highScores = loadHighScores();
-
-    if(highScores == null) highScores = [];
-    highScores.push(entry);
-    savehighScores(highScores);
+export const createHighScoreEntryForSet = (set) => {
+    return new Promise((resolve) => {
+        let entry = {
+            setId: set.id,
+            scores: []
+        }
+    
+        let highScores = loadHighScores();
+    
+        if(highScores == null) highScores = [];
+        highScores.push(entry);
+        savehighScores(highScores);
+        resolve(highScores);
+    });
 }
