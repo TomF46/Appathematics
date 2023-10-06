@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const NumberInput = ({ name, label, onChange, placeholder, value}) => {
+const NumberInput = ({ name, label, onChange, placeholder, value, max}) => {
     return (
         <div className="field">
             {label &&
@@ -19,6 +19,7 @@ const NumberInput = ({ name, label, onChange, placeholder, value}) => {
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}
+                    max={max}
                     required
                 />
             </div>
@@ -31,7 +32,8 @@ NumberInput.propTypes = {
     label: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
-    value: PropTypes.number
+    value: PropTypes.number,
+    max: PropTypes.number
 };
 
 export default NumberInput;

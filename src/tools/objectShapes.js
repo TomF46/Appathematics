@@ -3,7 +3,7 @@ export const newQuestionSet = {
     numberOfQuestions: 10,
     operands: {
       multiplication: {
-        chance: 100
+        chance: 1
       },
       division: {
         chance: 0

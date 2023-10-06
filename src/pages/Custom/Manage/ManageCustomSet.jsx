@@ -8,6 +8,7 @@ import MultiNumberInput from "../../../components/Inputs/MultiNumberInput";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import gameActions from "../../../redux/actions/gameActions";
+import OperatorInput from "../../../components/Inputs/OperatorInput";
 
 function ManageCustomSet() {
     const { id } = useParams();
@@ -50,6 +51,11 @@ function ManageCustomSet() {
         dispatch(gameActions.setHighScores(scores));
     }
 
+    function handle(set){
+        console.log(set);
+        setQuestionSet(set);
+    }
+
     return (
         <div>
             <h1 className="text-4xl my-4 text-primary text-center">{id ? "Manage" : "Create"} Set</h1>
@@ -73,6 +79,9 @@ function ManageCustomSet() {
                                 onChange={(event) => {setQuestionSet(handleQuestionNumberChange(event, questionSet))}}
                                 required
                             />
+                        </div>
+                        <div className="col-span-12 mb-2">
+                            <OperatorInput set={questionSet} onOperatorsChanged={(updatedSet) => {handle(updatedSet)}} />
                         </div>
                         <div className="col-span-12 mb-2">
                             <MultiNumberInput numbers={questionSet.includedNumbers} label="Included numbers" onNumberAdded={(number) => {setQuestionSet(handleIncludedNumberAdded(number, questionSet))}} />

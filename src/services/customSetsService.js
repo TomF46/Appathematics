@@ -47,6 +47,54 @@ export const handleSecondaryNumberAdded = (number, set) => {
     return updatedSet;
 }
 
+export const handleMultiplicationChanceChange = (event, set) => {
+    let { value } = event.target;
+    let updatedSet = { ...set};
+    if(value > 100) value = 100;
+    updatedSet.operands.multiplication.chance = Number(value / 100);
+    return updatedSet;
+}
+
+export const handleDivisionChanceChange = (event, set) => {
+    let { value } = event.target;
+    let updatedSet = { ...set};
+    if(value > 100) value = 100;
+    updatedSet.operands.division.chance = Number(value / 100);
+    return updatedSet;
+}
+
+export const handleAdditionChanceChange = (event, set) => {
+    let { value } = event.target;
+    let updatedSet = { ...set};
+    if(value > 100) value = 100;
+    updatedSet.operands.addition.chance = Number(value / 100);
+    return updatedSet;
+}
+
+export const handleSubtractionChanceChange = (event, set) => {
+    let { value } = event.target;
+    let updatedSet = { ...set};
+    if(value > 100) value = 100;
+    updatedSet.operands.subtraction.chance = Number(value / 100);
+    return updatedSet;
+}
+
+export const handlePowerChanceChange = (event, set) => {
+    let { value } = event.target;
+    let updatedSet = { ...set};
+    if(value > 100) value = 100;
+    updatedSet.operands.power.chance = Number(value / 100);
+    return updatedSet;
+}
+
+export const handleRootChanceChange = (event, set) => {
+    let { value } = event.target;
+    let updatedSet = { ...set};
+    if(value > 100) value = 100;
+    updatedSet.operands.root.chance = Number(value / 100);
+    return updatedSet;
+}
+
 export const setIsValid = (set) => {
     let errors = 0;
 
@@ -72,6 +120,11 @@ export const setIsValid = (set) => {
 
         if(set.secondaryNumbers.length < 1){
             toast.error("Must have at least one included number.");
+            errors++;
+        }
+
+        if(!operandChancesAreValid(set.operands)){
+            toast.error("Operator chances must add up to 100%");
             errors++;
         }
 
@@ -124,4 +177,9 @@ export const handleSetDelete = (set) => {
         saveSets(sets);
         resolve(sets);
     });
+}
+
+const operandChancesAreValid = (operands) => {
+    let sum = operands.multiplication.chance + operands.division.chance + operands.addition.chance + operands.subtraction.chance + operands.power.chance + operands.root.chance;
+    return 1 == sum;
 }
