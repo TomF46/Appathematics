@@ -7,7 +7,6 @@ export const loadState = () => {
     const customQuestionSets = loadCustomSets();
     if(customQuestionSets != null){
         let sets = mergeQuestionSets(state.game.configuration.questionSets, customQuestionSets);
-        console.log(sets);
         state.game.configuration.questionSets = sets;
     }
 

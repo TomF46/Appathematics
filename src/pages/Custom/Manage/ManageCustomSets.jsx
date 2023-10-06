@@ -1,8 +1,39 @@
 import { Link} from "react-router-dom";
-import { getCustomSets } from "../../../services/customSetsService";
+import { getCustomSets, getDefaultSets, handleSetDelete } from "../../../services/customSetsService";
+import "react-confirm-alert/src/react-confirm-alert.css";
+import { confirmAlert } from 'react-confirm-alert';
+import { useDispatch } from "react-redux";
+import gameActions from "../../../redux/actions/gameActions";
+import { useState } from "react";
 
 function ManageCustomSets() {
-    const sets = getCustomSets();
+    const dispatch = useDispatch();
+    const [sets, setSets] = useState(getCustomSets());
+
+    function handleDelete(set){
+        confirmAlert({
+            title: 'Confirm delete',
+            message: `Are you sure to delete "${set.name}".`,
+            buttons: [
+              {
+                label: 'Yes',
+                onClick: () => deleteSet(set)
+              },
+              {
+                label: 'No',
+                onClick: () => {}
+              }
+            ]
+          });
+    }
+
+    async function deleteSet(set){
+        let sets = await handleSetDelete(set);
+        const defaultSets = getDefaultSets();
+        const totalSets = defaultSets.concat(sets);
+        dispatch(gameActions.setConfiguration({questionSets: totalSets}));
+        setSets(getCustomSets());
+    }
 
     return (
         <div>
@@ -16,6 +47,7 @@ function ManageCustomSets() {
                         <tr>
                             <th>Name</th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,6 +56,7 @@ function ManageCustomSets() {
                                 <tr key={set.id}>
                                     <td>{set.name}</td>
                                     <td><Link to={`/custom/${set.id}/manage`}>Manage</Link></td>
+                                    <td><button onClick={() =>{handleDelete(set)}} className="px-4 py-1 bg-primary rounded-full text-lg bg-red-800 text-white">Delete</button></td>
                                 </tr>
                             )
                         })}

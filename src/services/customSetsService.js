@@ -114,3 +114,14 @@ export const createHighScoreEntryForSet = (set) => {
         resolve(highScores);
     });
 }
+
+export const handleSetDelete = (set) => {
+    return new Promise((resolve) => {
+        let sets = getCustomSets();
+        let original = sets.find((item) => item.id == set.id);
+        let index = sets.indexOf(original);
+        sets.splice(index, 1);
+        saveSets(sets);
+        resolve(sets);
+    });
+}
