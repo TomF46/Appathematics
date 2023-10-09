@@ -48,6 +48,10 @@ select,
   font-family: 'curse_casualregular', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
+.read-text {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
 .app-container{
   width: 100vw;
 }

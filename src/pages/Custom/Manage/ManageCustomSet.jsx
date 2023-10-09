@@ -62,7 +62,7 @@ function ManageCustomSet() {
             {questionSet && (
                 <form className="mt-4">
                     <div className="controls grid grid-cols-12">
-                        <div className="col-span-12 mb-2">
+                        <div className="col-span-12 md:col-span-6 md:mr-2 mb-2">
                             <TextInput 
                                 name="name"
                                 label="Name"
@@ -71,7 +71,7 @@ function ManageCustomSet() {
                                 required
                             />
                         </div>
-                        <div className="col-span-12 mb-2">
+                        <div className="col-span-12 md:col-span-6 md:ml-2 mb-2">
                             <NumberInput 
                                 name="numberOfQuestions"
                                 label="Number of questions"
@@ -83,10 +83,13 @@ function ManageCustomSet() {
                         <div className="col-span-12 mb-2">
                             <OperatorInput set={questionSet} onOperatorsChanged={(updatedSet) => {handle(updatedSet)}} />
                         </div>
-                        <div className="col-span-12 mb-2">
+                        <div className="col-span-12">
+                            <h2 className="text-xl text-primary">Numbers:</h2>
+                        </div>
+                        <div className="col-span-12 md:col-span-6 md:mr-2 mb-2">
                             <MultiNumberInput numbers={questionSet.includedNumbers} label="Included numbers" onNumberAdded={(number) => {setQuestionSet(handleIncludedNumberAdded(number, questionSet))}} onNumberRemoved={(number) => {setQuestionSet(handleIncludedNumberRemoved(number, questionSet))}} />
                         </div>
-                        <div className="col-span-12 mb-2">
+                        <div className="col-span-12 md:col-span-6 md:ml-2 mb-2">
                             <MultiNumberInput numbers={questionSet.secondaryNumbers} label="Secondary numbers" onNumberAdded={(number) => {setQuestionSet(handleSecondaryNumberAdded(number, questionSet))}} onNumberRemoved={(number) => {setQuestionSet(handleSecondaryNumberRemoved(number, questionSet))}} />
                         </div>
                         <div className="col-span-12 justify-self-center mt-2">

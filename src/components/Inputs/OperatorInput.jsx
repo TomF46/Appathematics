@@ -2,7 +2,12 @@ import PropTypes from "prop-types";
 import NumberInput from "./NumberInput";
 import { useState, useEffect } from "react";
 import { handleAdditionChanceChange, handleDivisionChanceChange, handleMultiplicationChanceChange, handlePowerChanceChange, handleRootChanceChange, handleSubtractionChanceChange } from "../../services/customSetsService";
-
+import MultiplyIcon from "../../assets/multiply.svg";
+import DivideIcon from "../../assets/divide.svg";
+import PlusIcon from "../../assets/plus.svg";
+import SubtractIcon from "../../assets/subtract.svg";
+import PowerIcon from "../../assets/power.svg";
+import RootIcon from "../../assets/root.svg";
 function OperatorInput({ set, onOperatorsChanged }) {
     const [operands, setOperarands] = useState(null);
 
@@ -36,10 +41,11 @@ function OperatorInput({ set, onOperatorsChanged }) {
 
 
     return <div>
-        <h2>Operators:</h2>
+        <h2 className="text-xl text-primary">Operators:</h2>
         {operands && (
             <div className="grid grid-cols-12">
-                <div className="col-span-12 mb-2">
+                <div className="col-span-12 md:col-span-2 px-4 mb-2">
+                    <img src={MultiplyIcon} className="mx-auto w-20 mb-2" alt="Multiply icon" />
                     <NumberInput 
                         name="multiplicationChance"
                         label="Multiplication chance(%)"
@@ -49,7 +55,8 @@ function OperatorInput({ set, onOperatorsChanged }) {
                         max={100}
                     />
                 </div>
-                <div className="col-span-12 mb-2">
+                <div className="col-span-12 md:col-span-2 px-4 mb-2">
+                <img src={DivideIcon} className="mx-auto w-20 mb-2" alt="Divide icon" />
                     <NumberInput 
                         name="divisionChance"
                         label="Division chance(%)"
@@ -59,7 +66,8 @@ function OperatorInput({ set, onOperatorsChanged }) {
                         max={100}
                     />
                 </div>
-                <div className="col-span-12 mb-2">
+                <div className="col-span-12 md:col-span-2 px-4 mb-2">
+                    <img src={PlusIcon} className="mx-auto w-20 mb-2" alt="Plus icon" />
                     <NumberInput 
                         name="additionChance"
                         label="Addition chance(%)"
@@ -69,7 +77,8 @@ function OperatorInput({ set, onOperatorsChanged }) {
                         max={100}
                     />
                 </div>
-                <div className="col-span-12 mb-2">
+                <div className="col-span-12 md:col-span-2 px-4 mb-2">
+                    <img src={SubtractIcon} className="mx-auto w-20 mb-2" alt="Subtract icon" />
                     <NumberInput 
                         name="subtractionChance"
                         label="Subtraction chance(%)"
@@ -79,7 +88,8 @@ function OperatorInput({ set, onOperatorsChanged }) {
                         max={100}
                     />
                 </div>
-                <div className="col-span-12 mb-2">
+                <div className="col-span-12 md:col-span-2 px-4 mb-2">
+                    <img src={PowerIcon} className="mx-auto w-20 mb-2" alt="Power icon" />
                     <NumberInput 
                         name="powerChance"
                         label="Power chance(%)"
@@ -89,7 +99,8 @@ function OperatorInput({ set, onOperatorsChanged }) {
                         max={100}
                     />
                 </div>
-                <div className="col-span-12 mb-2">
+                <div className="col-span-12 md:col-span-2 px-4 mb-2">
+                    <img src={RootIcon} className="mx-auto w-20 mb-2" alt="Root icon" />
                     <NumberInput 
                         name="rootChance"
                         label="Root chance(%)"

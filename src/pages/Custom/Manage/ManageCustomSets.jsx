@@ -54,9 +54,9 @@ function ManageCustomSets() {
                         {sets.map((set) => {
                             return (
                                 <tr key={set.id}>
-                                    <td>{set.name}</td>
-                                    <td><Link to={`/custom/${set.id}/manage`}>Manage</Link></td>
-                                    <td><button onClick={() =>{handleDelete(set)}} className="px-4 py-1 bg-primary rounded-full text-lg bg-red-800 text-white">Delete</button></td>
+                                    <td className="text-lg">{set.name}</td>
+                                    <td><Link to={`/custom/${set.id}/manage`} className="px-4 py-1 bg-primary rounded-full text-lg text-white">Manage</Link></td>
+                                    <td><button onClick={() =>{handleDelete(set)}} className="px-4 py-1 rounded-full text-lg bg-red-800 text-white read-text">Delete</button></td>
                                 </tr>
                             )
                         })}
