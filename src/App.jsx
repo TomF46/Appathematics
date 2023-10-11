@@ -7,6 +7,7 @@ import Leaderboards from "./pages/Leaderboards/Leaderboards";
 import Header from "./components/Header/Header";
 import ManageCustomSets from "./pages/Custom/Manage/ManageCustomSets";
 import ManageCustomSet from "./pages/Custom/Manage/ManageCustomSet";
+import ManageCustomSetGuide from "./pages/Custom/Manage/ManageCustomSetGuide";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="games/:id/play" element={<Play />}/>
           <Route path="/leaderboards" element={<Leaderboards />}/>
           <Route path="/custom" element={<ManageCustomSets />} />
+          <Route path="/custom/guide" element={<ManageCustomSetGuide />} />
           <Route path="/custom/manage" element={<ManageCustomSet />} />
           <Route path="/custom/:id/manage" element={<ManageCustomSet />} />
           <Route path="*" element={<Home />}/>

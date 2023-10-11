@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams} from "react-router-dom";
+import { Link, useNavigate, useParams} from "react-router-dom";
 import { newQuestionSet } from "../../../tools/objectShapes";
 import { createHighScoreEntryForSet, getCustomSet, getDefaultSets, handlePrimaryNumberAdded, handlePrimaryNumberRemoved, handleNameChange, handleQuestionNumberChange, handleSecondaryNumberAdded, handleSecondaryNumberRemoved, handleSetCreate, handleSetUpdate, setIsValid } from "../../../services/customSetsService";
 import TextInput from "../../../components/Inputs/TextInput";
@@ -58,7 +58,8 @@ function ManageCustomSet() {
 
     return (
         <div>
-            <h1 className="text-4xl my-4 text-primary text-center">{id ? "Manage" : "Create"} Set</h1>
+            <h1 className="text-4xl my-4 text-primary text-center">{id ? "Manage" : "Create"}Set</h1>
+            <Link to={"/custom/guide"} className="underline text-primary">View guide</Link>
             {questionSet && (
                 <form className="mt-4">
                     <div className="controls grid grid-cols-12">
