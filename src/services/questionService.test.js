@@ -7,7 +7,7 @@ describe('Question service', () => {
 
     test("Should return an array with the target number of questions", () => {
         const numberOfQuestions = 50;
-        const includedNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        const primaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         const secondaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         const operands = {
           multiplication: {
@@ -25,7 +25,7 @@ describe('Question service', () => {
         };
         const questions = questionsService.generateQuestions(
           numberOfQuestions,
-          includedNumbers,
+          primaryNumbers,
           secondaryNumbers,
           operands
         );
@@ -34,7 +34,7 @@ describe('Question service', () => {
     
       test("Should return an array with the target number of questions 2", () => {
         const numberOfQuestions = 100;
-        const includedNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        const primaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         const secondaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         const operands = {
           multiplication: {
@@ -52,7 +52,7 @@ describe('Question service', () => {
         };
         const questions = questionsService.generateQuestions(
           numberOfQuestions,
-          includedNumbers,
+          primaryNumbers,
           secondaryNumbers,
           operands
         );
@@ -61,7 +61,7 @@ describe('Question service', () => {
     
       test("Should return an array without any duplicates", () => {
         const numberOfQuestions = 50;
-        const includedNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        const primaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         const secondaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         const operands = {
           multiplication: {
@@ -79,7 +79,7 @@ describe('Question service', () => {
         };
         const questions = questionsService.generateQuestions(
           numberOfQuestions,
-          includedNumbers,
+          primaryNumbers,
           secondaryNumbers,
           operands
         );
@@ -102,7 +102,7 @@ describe('Question service', () => {
     
       test("Should return an array without any duplicates 2", () => {
         const numberOfQuestions = 100;
-        const includedNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        const primaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         const secondaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         const operands = {
           multiplication: {
@@ -120,7 +120,7 @@ describe('Question service', () => {
         };
         const questions = questionsService.generateQuestions(
           numberOfQuestions,
-          includedNumbers,
+          primaryNumbers,
           secondaryNumbers,
           operands
         );
@@ -143,7 +143,7 @@ describe('Question service', () => {
     
       test("Should not return question set with any questions both factors not included in included factors", () => {
         const numberOfQuestions = 50;
-        const includedNumbers = [1, 2, 3, 4, 6, 8, 10];
+        const primaryNumbers = [1, 2, 3, 4, 6, 8, 10];
         const secondaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         const operands = {
           multiplication: {
@@ -161,7 +161,7 @@ describe('Question service', () => {
         };
         const questions = questionsService.generateQuestions(
           numberOfQuestions,
-          includedNumbers,
+          primaryNumbers,
           secondaryNumbers,
           operands
         );
@@ -170,8 +170,8 @@ describe('Question service', () => {
     
         questions.forEach(question => {
           const erroneous =
-            !includedNumbers.includes(question.firstNumber) &&
-            !includedNumbers.includes(question.secondNumber);
+            !primaryNumbers.includes(question.firstNumber) &&
+            !primaryNumbers.includes(question.secondNumber);
           if (erroneous) outOfRange++;
         });
     
@@ -179,7 +179,7 @@ describe('Question service', () => {
       });
     
       test("Should not return a question where both factors are not included in included factors when calling generateQuestion", () => {
-        const includedNumbers = [1, 2, 3, 4, 6, 8, 10];
+        const primaryNumbers = [1, 2, 3, 4, 6, 8, 10];
         const secondaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         const operands = {
           multiplication: {
@@ -196,25 +196,25 @@ describe('Question service', () => {
           }
         };
         const question = questionsService.generateQuestion(
-          includedNumbers,
+          primaryNumbers,
           secondaryNumbers,
           operands
         );
         expect(
-          !includedNumbers.includes(question.firstNumber) &&
-            !includedNumbers.includes(question.secondNumber)
+          !primaryNumbers.includes(question.firstNumber) &&
+            !primaryNumbers.includes(question.secondNumber)
         ).toBeFalsy();
       });
     
       test("getRandomValue should return a random value included in its parameter array", () => {
-        const includedNumbers = [1, 2, 3, 4, 6, 8, 10];
-        const value = questionsService.getRandomValue(includedNumbers);
-        expect(includedNumbers.includes(value)).toBeTruthy();
+        const primaryNumbers = [1, 2, 3, 4, 6, 8, 10];
+        const value = questionsService.getRandomValue(primaryNumbers);
+        expect(primaryNumbers.includes(value)).toBeTruthy();
       });
     
       test("It should only return multiplication questions when the operands only have multiplication set to true", () => {
         const numberOfQuestions = 50;
-        const includedNumbers = [1, 2, 3, 4, 6, 8, 10];
+        const primaryNumbers = [1, 2, 3, 4, 6, 8, 10];
         const secondaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         const operands = {
           multiplication: {
@@ -232,7 +232,7 @@ describe('Question service', () => {
         };
         const questions = questionsService.generateQuestions(
           numberOfQuestions,
-          includedNumbers,
+          primaryNumbers,
           secondaryNumbers,
           operands
         );
@@ -249,7 +249,7 @@ describe('Question service', () => {
     
       test("It should only return division questions when the operands only have division set to true", () => {
         const numberOfQuestions = 50;
-        const includedNumbers = [1, 2, 3, 4, 6, 8, 10];
+        const primaryNumbers = [1, 2, 3, 4, 6, 8, 10];
         const secondaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         const operands = {
           multiplication: {
@@ -267,7 +267,7 @@ describe('Question service', () => {
         };
         const questions = questionsService.generateQuestions(
           numberOfQuestions,
-          includedNumbers,
+          primaryNumbers,
           secondaryNumbers,
           operands
         );

@@ -21,6 +21,6 @@ export const newQuestionSet = {
         chance: 0
       }
     },
-    includedNumbers: [],
+    primaryNumbers: [],
     secondaryNumbers: []
 }

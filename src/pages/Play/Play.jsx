@@ -55,7 +55,7 @@ function Play() {
 
     function generateQuestions(set){
       let qs = questionService.generateQuestions(set.numberOfQuestions,
-        set.includedNumbers,
+        set.primaryNumbers,
         set.secondaryNumbers,
         set.operands)
       setQuestions(qs);

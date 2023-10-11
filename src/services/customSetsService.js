@@ -35,21 +35,21 @@ export const handleQuestionNumberChange = (event, set) => {
     return updatedSet;
 }
 
-export const handleIncludedNumberAdded = (number, set) => {
+export const handlePrimaryNumberAdded = (number, set) => {
     let updatedSet = { ...set};
-    let exists = updatedSet.includedNumbers.find(x => x == number);
+    let exists = updatedSet.primaryNumbers.find(x => x == number);
     if(exists){
         toast.error("Number is already included.");
         return updatedSet;
     }
-    updatedSet.includedNumbers.push(number);
+    updatedSet.primaryNumbers.push(number);
     return updatedSet;
 }
 
-export const handleIncludedNumberRemoved = (number, set) => {
+export const handlePrimaryNumberRemoved = (number, set) => {
     let updatedSet = { ...set};
-    let index = updatedSet.includedNumbers.indexOf(number);
-    updatedSet.includedNumbers.splice(index, 1);
+    let index = updatedSet.primaryNumbers.indexOf(number);
+    updatedSet.primaryNumbers.splice(index, 1);
     return updatedSet;
 }
 
@@ -137,13 +137,13 @@ export const setIsValid = (set) => {
             errors++;
         }
 
-        if(set.includedNumbers.length < 1){
-            toast.error("Must have at least one included number.");
+        if(set.primaryNumbers.length < 1){
+            toast.error("Must have at least one primary number.");
             errors++;
         }
 
         if(set.secondaryNumbers.length < 1){
-            toast.error("Must have at least one included number.");
+            toast.error("Must have at least one secondary number.");
             errors++;
         }
 

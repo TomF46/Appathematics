@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams} from "react-router-dom";
 import { newQuestionSet } from "../../../tools/objectShapes";
-import { createHighScoreEntryForSet, getCustomSet, getDefaultSets, handleIncludedNumberAdded, handleIncludedNumberRemoved, handleNameChange, handleQuestionNumberChange, handleSecondaryNumberAdded, handleSecondaryNumberRemoved, handleSetCreate, handleSetUpdate, setIsValid } from "../../../services/customSetsService";
+import { createHighScoreEntryForSet, getCustomSet, getDefaultSets, handlePrimaryNumberAdded, handlePrimaryNumberRemoved, handleNameChange, handleQuestionNumberChange, handleSecondaryNumberAdded, handleSecondaryNumberRemoved, handleSetCreate, handleSetUpdate, setIsValid } from "../../../services/customSetsService";
 import TextInput from "../../../components/Inputs/TextInput";
 import NumberInput from "../../../components/Inputs/NumberInput";
 import MultiNumberInput from "../../../components/Inputs/MultiNumberInput";
@@ -87,7 +87,7 @@ function ManageCustomSet() {
                             <h2 className="text-xl text-primary">Numbers:</h2>
                         </div>
                         <div className="col-span-12 md:col-span-6 md:mr-2 mb-2">
-                            <MultiNumberInput numbers={questionSet.includedNumbers} label="Included numbers" onNumberAdded={(number) => {setQuestionSet(handleIncludedNumberAdded(number, questionSet))}} onNumberRemoved={(number) => {setQuestionSet(handleIncludedNumberRemoved(number, questionSet))}} />
+                            <MultiNumberInput numbers={questionSet.primaryNumbers} label="Primary numbers" onNumberAdded={(number) => {setQuestionSet(handlePrimaryNumberAdded(number, questionSet))}} onNumberRemoved={(number) => {setQuestionSet(handlePrimaryNumberRemoved(number, questionSet))}} />
                         </div>
                         <div className="col-span-12 md:col-span-6 md:ml-2 mb-2">
                             <MultiNumberInput numbers={questionSet.secondaryNumbers} label="Secondary numbers" onNumberAdded={(number) => {setQuestionSet(handleSecondaryNumberAdded(number, questionSet))}} onNumberRemoved={(number) => {setQuestionSet(handleSecondaryNumberRemoved(number, questionSet))}} />
