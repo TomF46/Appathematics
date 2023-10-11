@@ -28,7 +28,7 @@ class AnswersService {
   }
 
   checkAddition(userAnswer, firstNumber, secondNumber) {
-    const answer = firstNumber + secondNumber;
+    const answer = Number(firstNumber) + Number(secondNumber);
     return userAnswer == answer;
   }
 
