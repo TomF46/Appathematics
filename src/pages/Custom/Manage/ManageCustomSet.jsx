@@ -52,7 +52,6 @@ function ManageCustomSet() {
     }
 
     function handle(set){
-        console.log(set);
         setQuestionSet(set);
     }
 

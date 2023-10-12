@@ -3,47 +3,48 @@ import Methods from "./methods.enum";
 class QuestionsService {
   constructor() {
     this.numberOfQuestions = null;
-    this.includedUnits = null;
+    this.primaryUnits = null;
     this.secondaryUnits = null;
     this.operands = {};
+    this.isCustomSet = false;
   }
 
   generateQuestions(
-    numberOfQuestions,
-    includedUnits,
-    secondaryUnits,
-    operands
+    set
   ) {
-    this.includedUnits = includedUnits;
-    this.secondaryUnits = secondaryUnits;
-    this.numberOfQuestions = numberOfQuestions;
-    this.operands = operands;
-    return this.generateSet(
-      numberOfQuestions,
-      includedUnits,
-      secondaryUnits,
-      operands
-    );
+    this.primaryUnits = set.primaryNumbers;
+    this.secondaryUnits = set.secondaryNumbers;
+    this.numberOfQuestions = set.numberOfQuestions;
+    this.operands = set.operands;
+    this.isCustomSet = set.customSet;
+
+    return this.generateSet();
   }
 
-  generateSet(numberOfQuestions, includedUnits, secondaryUnits, operands) {
+  generateSet() {
     let questions = [];
-    for (let i = 0; i < numberOfQuestions; i++) {
+    for (let i = 0; i < this.numberOfQuestions; i++) {
       const question = this.generateQuestion(
-        includedUnits,
-        secondaryUnits,
-        operands
+        this.primaryUnits,
+        this.secondaryUnits,
+        this.operands
       );
       questions.push(question);
     }
-    return this.ensureNoDuplicates(questions);
+
+    if(this.isCustomSet){
+      return questions;
+    } else {
+      return this.ensureNoDuplicates(questions);
+    }
+    
   }
 
-  generateQuestion(includedUnits, secondaryUnits, operands) {
+  generateQuestion(primaryUnits, secondaryUnits, operands) {
     const method = this.getMethod(operands);
 
     let question = {
-      firstNumber: this.getRandomValue(includedUnits),
+      firstNumber: this.getRandomValue(primaryUnits),
       secondNumber: this.getRandomValue(secondaryUnits),
       method: method
     };
@@ -137,7 +138,7 @@ class QuestionsService {
           questions.splice(index, 1);
           questions.push(
             this.generateQuestion(
-              this.includedUnits,
+              this.primaryUnits,
               this.secondaryUnits,
               this.operands
             )

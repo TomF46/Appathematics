@@ -22,5 +22,6 @@ export const newQuestionSet = {
       }
     },
     primaryNumbers: [],
-    secondaryNumbers: []
+    secondaryNumbers: [],
+    customSet: true
 }

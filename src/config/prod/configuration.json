@@ -25,7 +25,8 @@
           }
         },
         "primaryNumbers": [2, 3, 5, 10],
-        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        "customSet": false
       },
       {
         "id" : 2,
@@ -52,7 +53,8 @@
           }
         },
         "primaryNumbers": [2, 3, 4, 5, 6, 10],
-        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        "customSet": false
       },
       {
         "id" : 3,
@@ -79,7 +81,8 @@
           }
         },
         "primaryNumbers": [2, 3, 4, 5, 6, 7, 8, 10],
-        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        "customSet": false
       },
       {
         "id" : 4,
@@ -106,7 +109,8 @@
           }
         },
         "primaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        "customSet": false
       },
       {
         "id" : 5,
@@ -133,7 +137,8 @@
           }
         },
         "primaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        "customSet": false
       },
       {
         "id" : 6,
@@ -160,7 +165,8 @@
           }
         },
         "primaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        "customSet": false
       },
       {
         "id" : 7,
@@ -187,7 +193,8 @@
           }
         },
         "primaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        "secondaryNumbers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        "customSet": false
       },
       {
         "id" : 8,
@@ -214,7 +221,8 @@
           }
         },
         "primaryNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        "secondaryNumbers": [2, 3]
+        "secondaryNumbers": [2, 3],
+        "customSet": false
       },
       {
         "id" : 9,
@@ -241,7 +249,8 @@
           }
         },
         "primaryNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        "secondaryNumbers": [2, 3]
+        "secondaryNumbers": [2, 3],
+        "customSet": false
       }
     ]
   }
