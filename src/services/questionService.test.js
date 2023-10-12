@@ -6,10 +6,12 @@ describe('Question service', () => {
     const questionsService = new QuestionsService();
 
     test("Should return an array with the target number of questions", () => {
-        const numberOfQuestions = 50;
-        const primaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-        const secondaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-        const operands = {
+      const set = {
+        name: "Test set",
+        numberOfQuestions: 50, 
+        primaryNumbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        secondaryNumbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        operands: {
           multiplication: {
             chance: 1
           },
@@ -21,68 +23,81 @@ describe('Question service', () => {
           },
           subtraction: {
             chance: 0
+          },
+          power: {
+            chance: 0
+          },
+          root: {
+            chance: 0
           }
-        };
-        const questions = questionsService.generateQuestions(
-          numberOfQuestions,
-          primaryNumbers,
-          secondaryNumbers,
-          operands
-        );
+        },
+        customSet: true
+      }
+        const questions = questionsService.generateQuestions(set);
         expect(questions.length).toBe(50);
       });
     
       test("Should return an array with the target number of questions 2", () => {
-        const numberOfQuestions = 100;
-        const primaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-        const secondaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-        const operands = {
-          multiplication: {
-            chance: 1
+        const set = {
+          name: "Test set",
+          numberOfQuestions: 100, 
+          primaryNumbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+          secondaryNumbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+          operands: {
+            multiplication: {
+              chance: 1
+            },
+            division: {
+              chance: 0
+            },
+            addition: {
+              chance: 0
+            },
+            subtraction: {
+              chance: 0
+            },
+            power: {
+              chance: 0
+            },
+            root: {
+              chance: 0
+            }
           },
-          division: {
-            chance: 0
-          },
-          addition: {
-            chance: 0
-          },
-          subtraction: {
-            chance: 0
-          }
-        };
-        const questions = questionsService.generateQuestions(
-          numberOfQuestions,
-          primaryNumbers,
-          secondaryNumbers,
-          operands
-        );
+          customSet: true
+        }
+        const questions = questionsService.generateQuestions(set);
         expect(questions.length).toBe(100);
       });
     
       test("Should return an array without any duplicates", () => {
-        const numberOfQuestions = 50;
-        const primaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-        const secondaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-        const operands = {
-          multiplication: {
-            chance: 1
+        const set = {
+          name: "Test set",
+          numberOfQuestions: 50, 
+          primaryNumbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+          secondaryNumbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+          operands: {
+            multiplication: {
+              chance: 1
+            },
+            division: {
+              chance: 0
+            },
+            addition: {
+              chance: 0
+            },
+            subtraction: {
+              chance: 0
+            },
+            power: {
+              chance: 0
+            },
+            root: {
+              chance: 0
+            }
           },
-          division: {
-            chance: 0
-          },
-          addition: {
-            chance: 0
-          },
-          subtraction: {
-            chance: 0
-          }
-        };
-        const questions = questionsService.generateQuestions(
-          numberOfQuestions,
-          primaryNumbers,
-          secondaryNumbers,
-          operands
-        );
+          customSet: false
+        }
+        const questions = questionsService.generateQuestions(set);
     
         let duplicates = 0;
     
@@ -101,29 +116,34 @@ describe('Question service', () => {
       });
     
       test("Should return an array without any duplicates 2", () => {
-        const numberOfQuestions = 100;
-        const primaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-        const secondaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-        const operands = {
-          multiplication: {
-            chance: 1
+        const set = {
+          name: "Test set",
+          numberOfQuestions: 100, 
+          primaryNumbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+          secondaryNumbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+          operands: {
+            multiplication: {
+              chance: 1
+            },
+            division: {
+              chance: 0
+            },
+            addition: {
+              chance: 0
+            },
+            subtraction: {
+              chance: 0
+            },
+            power: {
+              chance: 0
+            },
+            root: {
+              chance: 0
+            }
           },
-          division: {
-            chance: 0
-          },
-          addition: {
-            chance: 0
-          },
-          subtraction: {
-            chance: 0
-          }
-        };
-        const questions = questionsService.generateQuestions(
-          numberOfQuestions,
-          primaryNumbers,
-          secondaryNumbers,
-          operands
-        );
+          customSet: true
+        }
+        const questions = questionsService.generateQuestions(set);
     
         let duplicates = 0;
     
@@ -142,36 +162,42 @@ describe('Question service', () => {
       });
     
       test("Should not return question set with any questions both factors not included in included factors", () => {
-        const numberOfQuestions = 50;
-        const primaryNumbers = [1, 2, 3, 4, 6, 8, 10];
-        const secondaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-        const operands = {
-          multiplication: {
-            chance: 1
+        const set = {
+          name: "Test set",
+          numberOfQuestions: 50, 
+          primaryNumbers: [1, 2, 3, 4, 6, 8, 10],
+          secondaryNumbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+          operands: {
+            multiplication: {
+              chance: 1
+            },
+            division: {
+              chance: 0
+            },
+            addition: {
+              chance: 0
+            },
+            subtraction: {
+              chance: 0
+            },
+            power: {
+              chance: 0
+            },
+            root: {
+              chance: 0
+            }
           },
-          division: {
-            chance: 0
-          },
-          addition: {
-            chance: 0
-          },
-          subtraction: {
-            chance: 0
-          }
-        };
-        const questions = questionsService.generateQuestions(
-          numberOfQuestions,
-          primaryNumbers,
-          secondaryNumbers,
-          operands
-        );
+          customSet: true
+        }
+
+        const questions = questionsService.generateQuestions(set);
     
         let outOfRange = 0;
     
         questions.forEach(question => {
           const erroneous =
-            !primaryNumbers.includes(question.firstNumber) &&
-            !primaryNumbers.includes(question.secondNumber);
+            !set.primaryNumbers.includes(question.firstNumber) &&
+            !set.primaryNumbers.includes(question.secondNumber);
           if (erroneous) outOfRange++;
         });
     
@@ -179,30 +205,42 @@ describe('Question service', () => {
       });
     
       test("Should not return a question where both factors are not included in included factors when calling generateQuestion", () => {
-        const primaryNumbers = [1, 2, 3, 4, 6, 8, 10];
-        const secondaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-        const operands = {
-          multiplication: {
-            chance: 1
+        
+        const set = {
+          name: "Test set",
+          numberOfQuestions: 50, 
+          primaryNumbers: [1, 2, 3, 4, 6, 8, 10],
+          secondaryNumbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+          operands: {
+            multiplication: {
+              chance: 1
+            },
+            division: {
+              chance: 0
+            },
+            addition: {
+              chance: 0
+            },
+            subtraction: {
+              chance: 0
+            },
+            power: {
+              chance: 0
+            },
+            root: {
+              chance: 0
+            }
           },
-          division: {
-            chance: 0
-          },
-          addition: {
-            chance: 0
-          },
-          subtraction: {
-            chance: 0
-          }
-        };
+          customSet: true
+        }
         const question = questionsService.generateQuestion(
-          primaryNumbers,
-          secondaryNumbers,
-          operands
+          set.primaryNumbers,
+          set.secondaryNumbers,
+          set.operands
         );
         expect(
-          !primaryNumbers.includes(question.firstNumber) &&
-            !primaryNumbers.includes(question.secondNumber)
+          !set.primaryNumbers.includes(question.firstNumber) &&
+            !set.primaryNumbers.includes(question.secondNumber)
         ).toBeFalsy();
       });
     
@@ -213,29 +251,34 @@ describe('Question service', () => {
       });
     
       test("It should only return multiplication questions when the operands only have multiplication set to true", () => {
-        const numberOfQuestions = 50;
-        const primaryNumbers = [1, 2, 3, 4, 6, 8, 10];
-        const secondaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-        const operands = {
-          multiplication: {
-            chance: 1
+        const set = {
+          name: "Test set",
+          numberOfQuestions: 50, 
+          primaryNumbers: [1, 2, 3, 4, 6, 8, 10],
+          secondaryNumbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+          operands: {
+            multiplication: {
+              chance: 1
+            },
+            division: {
+              chance: 0
+            },
+            addition: {
+              chance: 0
+            },
+            subtraction: {
+              chance: 0
+            },
+            power: {
+              chance: 0
+            },
+            root: {
+              chance: 0
+            }
           },
-          division: {
-            chance: 0
-          },
-          addition: {
-            chance: 0
-          },
-          subtraction: {
-            chance: 0
-          }
-        };
-        const questions = questionsService.generateQuestions(
-          numberOfQuestions,
-          primaryNumbers,
-          secondaryNumbers,
-          operands
-        );
+          customSet: true
+        }
+        const questions = questionsService.generateQuestions(set);
     
         let multiplicationQuestions = 0;
     
@@ -244,33 +287,38 @@ describe('Question service', () => {
           if (isMultiplication) multiplicationQuestions++;
         });
     
-        expect(multiplicationQuestions == numberOfQuestions).toBeTruthy();
+        expect(multiplicationQuestions == set.numberOfQuestions).toBeTruthy();
       });
     
       test("It should only return division questions when the operands only have division set to true", () => {
-        const numberOfQuestions = 50;
-        const primaryNumbers = [1, 2, 3, 4, 6, 8, 10];
-        const secondaryNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-        const operands = {
-          multiplication: {
-            chance: 0
+        const set = {
+          name: "Test set",
+          numberOfQuestions: 50, 
+          primaryNumbers: [1, 2, 3, 4, 6, 8, 10],
+          secondaryNumbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+          operands: {
+            multiplication: {
+              chance: 0
+            },
+            division: {
+              chance: 1
+            },
+            addition: {
+              chance: 0
+            },
+            subtraction: {
+              chance: 0
+            },
+            power: {
+              chance: 0
+            },
+            root: {
+              chance: 0
+            }
           },
-          division: {
-            chance: 1
-          },
-          addition: {
-            chance: 0
-          },
-          subtraction: {
-            chance: 0
-          }
-        };
-        const questions = questionsService.generateQuestions(
-          numberOfQuestions,
-          primaryNumbers,
-          secondaryNumbers,
-          operands
-        );
+          customSet: true
+        }
+        const questions = questionsService.generateQuestions(set);
     
         let divisionQuestions = 0;
     
@@ -278,8 +326,10 @@ describe('Question service', () => {
           const isDivision = question.method == Methods.Division;
           if (isDivision) divisionQuestions++;
         });
+
+        console.log(divisionQuestions);
     
-        expect(divisionQuestions == numberOfQuestions).toBeTruthy();
+        expect(divisionQuestions == set.numberOfQuestions).toBeTruthy();
       });
     
 })
