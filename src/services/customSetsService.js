@@ -37,13 +37,32 @@ export const handleQuestionNumberChange = (event, set) => {
 
 export const handlePrimaryNumberAdded = (number, set) => {
     let updatedSet = { ...set};
+    number = Number(number);
+    if(!isValidNumber(number)) return updatedSet;
+
     let exists = updatedSet.primaryNumbers.find(x => x == number);
     if(exists){
         toast.error("Number is already included.");
         return updatedSet;
     }
+
     updatedSet.primaryNumbers.push(number);
+
     return updatedSet;
+}
+
+const isValidNumber = (number) => {
+    if(!Number.isInteger(number)){
+        toast.error("Decimals are currently not allowed.")
+        return false;
+    }
+
+    if(number < 0){
+        toast.error("Negative numbers are currently not allowed.")
+        return false;
+    }
+
+    return true;
 }
 
 export const handlePrimaryNumberRemoved = (number, set) => {
@@ -55,6 +74,8 @@ export const handlePrimaryNumberRemoved = (number, set) => {
 
 export const handleSecondaryNumberAdded = (number, set) => {
     let updatedSet = { ...set};
+    number = Number(number);
+    if(!isValidNumber(number)) return updatedSet;
     let exists = updatedSet.secondaryNumbers.find(x => x == number);
     if(exists){
         toast.error("This secondary number is already included.");
