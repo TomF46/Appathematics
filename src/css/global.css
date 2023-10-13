@@ -114,6 +114,11 @@ select,
   height: 50px;
 }
 
+.keyBtnWide{
+  width: 100px;
+  height: 50px;
+}
+
 .virtual-keyboard{
   width: 260px;
 }

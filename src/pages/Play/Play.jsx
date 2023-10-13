@@ -84,6 +84,10 @@ function Play() {
         return;
       }
 
+      if(key == "-" && currentAnswer.includes("-")) return;
+
+      if(key == "." && currentAnswer.includes(".")) return;
+
       if(currentAnswer.length >=4) return;
 
       setCurrentAnswer(currentAnswer + String(key));

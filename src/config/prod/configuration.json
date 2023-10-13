@@ -6,16 +6,16 @@
         "numberOfQuestions": 33,
         "operands": {
           "multiplication": {
-            "chance": 0.33
+            "chance": 1
           },
           "division": {
             "chance": 0
           },
           "addition": {
-            "chance": 0.33
+            "chance": 0
           },
           "subtraction": {
-            "chance": 0.33
+            "chance": 0
           },
           "power": {
             "chance": 0
@@ -37,13 +37,13 @@
             "chance": 0.7
           },
           "division": {
-            "chance": 0
+            "chance": 0.3
           },
           "addition": {
-            "chance": 0.15
+            "chance": 0
           },
           "subtraction": {
-            "chance": 0.15
+            "chance": 0
           },
           "power": {
             "chance": 0
@@ -62,16 +62,16 @@
         "numberOfQuestions": 55,
         "operands": {
           "multiplication": {
-            "chance": 0.7
+            "chance": 0.5
           },
           "division": {
-            "chance": 0
+            "chance": 0.5
           },
           "addition": {
-            "chance": 0.15
+            "chance": 0
           },
           "subtraction": {
-            "chance": 0.15
+            "chance": 0
           },
           "power": {
             "chance": 0
@@ -90,10 +90,10 @@
         "numberOfQuestions": 66,
         "operands": {
           "multiplication": {
-            "chance": 1
+            "chance": 0.5
           },
           "division": {
-            "chance": 0
+            "chance": 0.5
           },
           "addition": {
             "chance": 0
@@ -121,13 +121,13 @@
             "chance": 0.5
           },
           "division": {
-            "chance": 0.3
+            "chance": 0.5
           },
           "addition": {
-            "chance": 0.1
+            "chance": 0
           },
           "subtraction": {
-            "chance": 0.1
+            "chance": 0
           },
           "power": {
             "chance": 0
@@ -149,13 +149,13 @@
             "chance": 0.6
           },
           "division": {
-            "chance": 0.2
+            "chance": 0.4
           },
           "addition": {
-            "chance": 0.1
+            "chance": 0
           },
           "subtraction": {
-            "chance": 0.1
+            "chance": 0
           },
           "power": {
             "chance": 0
@@ -198,6 +198,34 @@
       },
       {
         "id" : 8,
+        "name": "Addition / Subtraction",
+        "numberOfQuestions": 33,
+        "operands": {
+          "multiplication": {
+            "chance": 0
+          },
+          "division": {
+            "chance": 0
+          },
+          "addition": {
+            "chance": 0.5
+          },
+          "subtraction": {
+            "chance": 0.5
+          },
+          "power": {
+            "chance": 0
+          },
+          "root": {
+            "chance": 0
+          }
+        },
+        "primaryNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
+        "secondaryNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
+        "customSet": false
+      },
+      {
+        "id" : 9,
         "name": "Powers",
         "numberOfQuestions": 20,
         "operands": {
@@ -225,7 +253,7 @@
         "customSet": false
       },
       {
-        "id" : 9,
+        "id" : 10,
         "name": "Roots",
         "numberOfQuestions": 20,
         "operands": {

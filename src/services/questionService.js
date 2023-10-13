@@ -54,11 +54,6 @@ class QuestionsService {
       return question;
     }
 
-    if (question.method == Methods.Subtraction) {
-      question = this.formatSubtraction(question);
-      return question;
-    }
-
     if (question.method == Methods.Root) {
       question = this.formatRoot(question);
       return question;
@@ -104,14 +99,6 @@ class QuestionsService {
   formatDivision(question) {
     const firstValue = question.firstNumber * question.secondNumber;
     question.firstNumber = firstValue;
-    return question;
-  }
-
-  formatSubtraction(question) {
-    if (question.firstNumber >= question.secondNumber) return question;
-    const tempN1 = question.firstNumber;
-    question.firstNumber = question.secondNumber;
-    question.secondNumber = tempN1;
     return question;
   }
 
