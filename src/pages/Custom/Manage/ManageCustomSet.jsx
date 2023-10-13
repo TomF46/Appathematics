@@ -15,13 +15,13 @@ function ManageCustomSet() {
     const navigate = useNavigate();
     const dispatch = useDispatch()
     const questionSets = useSelector((state) => state.game.configuration.questionSets)
-    const [questionSet, setQuestionSet] = useState({ ...newQuestionSet });
+    const [questionSet, setQuestionSet] = useState(structuredClone(newQuestionSet));
 
     useEffect(() => {
         if(id){
             setQuestionSet(getCustomSet(id));
         } else {
-            setQuestionSet({ ...newQuestionSet});
+            setQuestionSet(structuredClone(newQuestionSet));
         }
     }, [id])
 
