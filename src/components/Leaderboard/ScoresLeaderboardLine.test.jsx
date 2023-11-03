@@ -1,5 +1,4 @@
 import { describe, expect, test } from 'vitest';
-import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
 import ComponentTestBed from '../../tests/ComponentTestBed';
 import ScoresLeaderboardLine from './ScoresLeaderboardLine';
