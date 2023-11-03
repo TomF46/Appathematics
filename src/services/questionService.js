@@ -1,4 +1,4 @@
-import Methods from "./methods.enum";
+import Methods from './methods.enum';
 
 class QuestionsService {
   constructor() {
@@ -9,9 +9,7 @@ class QuestionsService {
     this.isCustomSet = false;
   }
 
-  generateQuestions(
-    set
-  ) {
+  generateQuestions(set) {
     this.primaryUnits = set.primaryNumbers;
     this.secondaryUnits = set.secondaryNumbers;
     this.numberOfQuestions = set.numberOfQuestions;
@@ -24,20 +22,15 @@ class QuestionsService {
   generateSet() {
     let questions = [];
     for (let i = 0; i < this.numberOfQuestions; i++) {
-      const question = this.generateQuestion(
-        this.primaryUnits,
-        this.secondaryUnits,
-        this.operands
-      );
+      const question = this.generateQuestion(this.primaryUnits, this.secondaryUnits, this.operands);
       questions.push(question);
     }
 
-    if(this.isCustomSet){
+    if (this.isCustomSet) {
       return questions;
     } else {
       return this.ensureNoDuplicates(questions);
     }
-    
   }
 
   generateQuestion(primaryUnits, secondaryUnits, operands) {
@@ -46,7 +39,7 @@ class QuestionsService {
     let question = {
       firstNumber: this.getRandomValue(primaryUnits),
       secondNumber: this.getRandomValue(secondaryUnits),
-      method: method
+      method: method,
     };
 
     if (question.method == Methods.Division) {
@@ -60,15 +53,16 @@ class QuestionsService {
     }
 
     // Never flip subtraction/ root or power units
-    if(question.method == Methods.Subtraction || question.method == Methods.Power || question.method == Methods.Root) return question;
+    if (
+      question.method == Methods.Subtraction ||
+      question.method == Methods.Power ||
+      question.method == Methods.Root
+    )
+      return question;
 
     //50% chance of flipping factors
     if (this.shouldRandomise())
-      return this.flipFactors(
-        question.firstNumber,
-        question.secondNumber,
-        method
-      );
+      return this.flipFactors(question.firstNumber, question.secondNumber, method);
     return question;
   }
 
@@ -79,7 +73,7 @@ class QuestionsService {
       operands.addition,
       operands.subtraction,
       operands.power,
-      operands.root
+      operands.root,
     ];
 
     const method = this.getMethodUsingOdds(methods);
@@ -116,19 +110,15 @@ class QuestionsService {
 
       questions.forEach((question, index) => {
         const matching = questions.filter(
-          comparand =>
+          (comparand) =>
             question.firstNumber == comparand.firstNumber &&
-            question.secondNumber == comparand.secondNumber
+            question.secondNumber == comparand.secondNumber,
         );
         if (matching.length > 1) {
           duplicateCount++;
           questions.splice(index, 1);
           questions.push(
-            this.generateQuestion(
-              this.primaryUnits,
-              this.secondaryUnits,
-              this.operands
-            )
+            this.generateQuestion(this.primaryUnits, this.secondaryUnits, this.operands),
           );
         }
       });
@@ -145,7 +135,7 @@ class QuestionsService {
     return {
       firstNumber: secondNumber,
       secondNumber: firstNumber,
-      method: method
+      method: method,
     };
   }
 

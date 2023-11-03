@@ -1,4 +1,4 @@
-import Methods from "./methods.enum";
+import Methods from './methods.enum';
 
 class AnswersService {
   constructor() {}
@@ -10,10 +10,8 @@ class AnswersService {
       return this.checkAddition(userAnswer, firstNumber, secondNumber);
     if (method == Methods.Subtraction)
       return this.checkSubtraction(userAnswer, firstNumber, secondNumber);
-    if (method == Methods.Power)
-      return this.checkPower(userAnswer, firstNumber, secondNumber);
-    if (method == Methods.Root)
-      return this.checkRoot(userAnswer, firstNumber, secondNumber);
+    if (method == Methods.Power) return this.checkPower(userAnswer, firstNumber, secondNumber);
+    if (method == Methods.Root) return this.checkRoot(userAnswer, firstNumber, secondNumber);
     return this.checkMultiplication(userAnswer, firstNumber, secondNumber);
   }
 
@@ -43,7 +41,7 @@ class AnswersService {
   }
 
   checkRoot(userAnswer, firstNumber, secondNumber) {
-    const answer = Math.pow(firstNumber, 1/secondNumber);
+    const answer = Math.pow(firstNumber, 1 / secondNumber);
     return userAnswer == Math.round(answer);
   }
 }

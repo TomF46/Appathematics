@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Inter");
-
+@import url('https://fonts.googleapis.com/css?family=Inter');
 
 @tailwind base;
 @tailwind components;
@@ -7,8 +6,9 @@
 
 @font-face {
   font-family: 'curse_casualregular';
-  src: url('fonts/curse_casual-webfont.woff2') format('woff2'),
-        url('fonts/curse_casual-webfont.woff') format('woff');
+  src:
+    url('fonts/curse_casual-webfont.woff2') format('woff2'),
+    url('fonts/curse_casual-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -52,15 +52,15 @@ select,
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-.app-container{
+.app-container {
   width: 100vw;
 }
 
-.logo{
+.logo {
   width: 200px;
 }
 
-.play-input{
+.play-input {
   height: 100px;
   width: 100px;
   font-size: 2rem;
@@ -69,7 +69,7 @@ select,
   border: 2px solid #219ff4;
 }
 
-.play-input:disabled{
+.play-input:disabled {
   background-color: #fff;
 }
 
@@ -109,17 +109,17 @@ select,
   }
 }
 
-.keyBtn{
+.keyBtn {
   width: 60px;
   height: 50px;
 }
 
-.keyBtnWide{
+.keyBtnWide {
   width: 100px;
   height: 50px;
 }
 
-.virtual-keyboard{
+.virtual-keyboard {
   width: 260px;
 }
 
@@ -132,7 +132,8 @@ select#custom-select {
   -webkit-padding-end: 20px;
   -webkit-padding-start: 2px;
   -webkit-user-select: none;
-  background-image: url(/dropdown.png),
+  background-image:
+    url(/dropdown.png),
     -webkit-linear-gradient(#fafafa, #f4f4f4 40%, #e5e5e5);
   background-position: 97% center;
   background-repeat: no-repeat;
@@ -148,12 +149,13 @@ select#custom-select {
   -webkit-appearance: none;
   -moz-appearance: none;
   text-indent: 1px;
-  text-overflow: "";
+  text-overflow: '';
 }
 
 select#custom-select {
   color: #fff;
-  background-image: url(/dropdown.png),
+  background-image:
+    url(/dropdown.png),
     -webkit-linear-gradient(#219ff4, #219ff4 40%, #219ff4);
   background-color: #219ff4;
   -webkit-border-radius: 20px;
@@ -167,7 +169,7 @@ select#custom-select::-ms-expand {
   display: none;
 }
 
-.back-button{
+.back-button {
   position: absolute;
   top: 25%;
   z-index: 999;
@@ -175,9 +177,9 @@ select#custom-select::-ms-expand {
 }
 
 .react-confirm-alert-overlay {
-  background-color: var(--primary-color)!important;
+  background-color: var(--primary-color) !important;
 }
 
 .react-confirm-alert-button-group button {
-  background-color: var(--primary-color)!important;
+  background-color: var(--primary-color) !important;
 }
