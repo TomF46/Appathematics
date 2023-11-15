@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import QuestionsService from '../../services/questionService';
 import Methods from '../../services/methods.enum';
 import VirtualKeyboard from '../../components/Inputs/VirtualKeyboard';
@@ -10,6 +10,7 @@ import Summary from '../../components/Summary/Summary';
 import gameActions from '../../redux/actions/gameActions';
 import PowerQuestionFormat from '../../components/QuestionFormats/PowerQuestionFormat';
 import RootQuestionFormat from '../../components/QuestionFormats/RootQuestionFormat';
+import { useMemo } from 'react';
 
 function Play() {
   const { id } = useParams();
@@ -17,7 +18,7 @@ function Play() {
   const time = useSelector((state) => state.game.timer);
   const questionSets = useSelector((state) => state.game.configuration.questionSets);
   const dispatch = useDispatch();
-  const questionService = new QuestionsService();
+  const questionService = useMemo(() => new QuestionsService(), []);
   const answersService = new AnswersService();
   const [gameState, setGameState] = useState(gameStates.Play);
   const [game, setGame] = useState(null);
@@ -28,20 +29,32 @@ function Play() {
   const [inputClass, setInputClass] = useState('');
   const [score, setScore] = useState(null);
 
+  const generateQuestions = useCallback(
+    (set) => {
+      let qs = questionService.generateQuestions(set);
+      setQuestions(qs);
+    },
+    [questionService],
+  );
+
+  const handleQuizComplete = useCallback(() => {
+    dispatch(gameActions.setGameInProgress(false));
+    setScore(time);
+    setGameState(gameStates.Summary);
+  }, [time, dispatch]);
+
   useEffect(() => {
-    if (!game) {
-      let g = questionSets.find((x) => x.id == id);
-      setGame(g);
-      generateQuestions(g);
-    }
-  }, [game]);
+    let g = questionSets.find((x) => x.id == id);
+    setGame(g);
+    generateQuestions(g);
+  }, [id, questionSets, generateQuestions]);
 
   useEffect(() => {
     if (questions) {
       dispatch(gameActions.setGameInProgress(true));
       setQuestionIndex(0);
     }
-  }, [questions]);
+  }, [questions, dispatch]);
 
   useEffect(() => {
     if (questionIndex != null) {
@@ -51,12 +64,7 @@ function Play() {
       }
       setActiveQuestion(questions[questionIndex]);
     }
-  }, [questionIndex]);
-
-  function generateQuestions(set) {
-    let qs = questionService.generateQuestions(set);
-    setQuestions(qs);
-  }
+  }, [questionIndex, questions, handleQuizComplete]);
 
   function getOperator(method) {
     if (method == Methods.Multiplication) return 'x';
@@ -118,12 +126,6 @@ function Play() {
   function handleBackButton() {
     if (currentAnswer == null) return;
     setCurrentAnswer(currentAnswer.slice(0, -1));
-  }
-
-  function handleQuizComplete() {
-    dispatch(gameActions.setGameInProgress(false));
-    setScore(time);
-    setGameState(gameStates.Summary);
   }
 
   function renderQuestion(question) {

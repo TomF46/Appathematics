@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
@@ -6,20 +6,20 @@ function SetSelect({ onSetSelected, autoSelectMode }) {
   const questionSets = useSelector((state) => state.game.configuration.questionSets);
   const [set, setSet] = useState(questionSets[0].id);
 
+  const handleSelected = useCallback(() => {
+    var selected = questionSets.find((x) => x.id == set);
+    onSetSelected(selected);
+  }, [questionSets, set, onSetSelected]);
+
   useEffect(() => {
     if (set && autoSelectMode) {
       handleSelected();
     }
-  }, [set]);
+  }, [set, autoSelectMode, handleSelected]);
 
   function onChange(event) {
     const { value } = event.target;
     setSet(value);
-  }
-
-  function handleSelected() {
-    var selected = questionSets.find((x) => x.id == set);
-    onSetSelected(selected);
   }
 
   return (

@@ -16,13 +16,13 @@ function Timer() {
     if (!pathname.includes('/play')) {
       dispatch(gameActions.setGameInProgress(false));
     }
-  }, [pathname]);
+  }, [pathname, dispatch]);
 
   useEffect(() => {
     if (gameInProgress) {
       dispatch(gameActions.setTimer(0));
     }
-  }, [gameInProgress]);
+  }, [gameInProgress, dispatch]);
 
   useEffect(() => {
     let intervalId;
@@ -31,7 +31,7 @@ function Timer() {
     }
 
     return () => clearInterval(intervalId);
-  }, [time, gameInProgress]);
+  }, [time, gameInProgress, dispatch]);
 
   return (
     <div className='timer'>

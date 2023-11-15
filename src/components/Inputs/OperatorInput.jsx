@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import NumberInput from './NumberInput';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import {
   handleAdditionChanceChange,
   handleDivisionChanceChange,
@@ -18,11 +18,7 @@ import RootIcon from '../../assets/root.svg';
 function OperatorInput({ set, onOperatorsChanged }) {
   const [operands, setOperarands] = useState(null);
 
-  useEffect(() => {
-    setOperarands(formatOperators());
-  }, [set]);
-
-  function formatOperators() {
+  const formatOperators = useCallback(() => {
     return {
       multiplication: {
         chance: Math.round(set.operands.multiplication.chance * 100),
@@ -43,7 +39,11 @@ function OperatorInput({ set, onOperatorsChanged }) {
         chance: Math.round(set.operands.root.chance * 100),
       },
     };
-  }
+  }, [set]);
+
+  useEffect(() => {
+    setOperarands(formatOperators());
+  }, [set, formatOperators]);
 
   return (
     <div>
