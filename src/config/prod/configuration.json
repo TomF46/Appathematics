@@ -6,7 +6,7 @@
       "numberOfQuestions": 33,
       "operands": {
         "multiplication": {
-          "chance": 1
+          "chance": 100
         },
         "division": {
           "chance": 0
@@ -34,10 +34,10 @@
       "numberOfQuestions": 44,
       "operands": {
         "multiplication": {
-          "chance": 0.7
+          "chance": 70
         },
         "division": {
-          "chance": 0.3
+          "chance": 30
         },
         "addition": {
           "chance": 0
@@ -62,10 +62,10 @@
       "numberOfQuestions": 55,
       "operands": {
         "multiplication": {
-          "chance": 0.5
+          "chance": 50
         },
         "division": {
-          "chance": 0.5
+          "chance": 50
         },
         "addition": {
           "chance": 0
@@ -90,10 +90,10 @@
       "numberOfQuestions": 66,
       "operands": {
         "multiplication": {
-          "chance": 0.5
+          "chance": 50
         },
         "division": {
-          "chance": 0.5
+          "chance": 50
         },
         "addition": {
           "chance": 0
@@ -118,10 +118,10 @@
       "numberOfQuestions": 77,
       "operands": {
         "multiplication": {
-          "chance": 0.5
+          "chance": 50
         },
         "division": {
-          "chance": 0.5
+          "chance": 50
         },
         "addition": {
           "chance": 0
@@ -146,10 +146,10 @@
       "numberOfQuestions": 88,
       "operands": {
         "multiplication": {
-          "chance": 0.6
+          "chance": 60
         },
         "division": {
-          "chance": 0.4
+          "chance": 40
         },
         "addition": {
           "chance": 0
@@ -174,10 +174,10 @@
       "numberOfQuestions": 99,
       "operands": {
         "multiplication": {
-          "chance": 0.75
+          "chance": 75
         },
         "division": {
-          "chance": 0.25
+          "chance": 25
         },
         "addition": {
           "chance": 0
@@ -208,10 +208,10 @@
           "chance": 0
         },
         "addition": {
-          "chance": 0.5
+          "chance": 50
         },
         "subtraction": {
-          "chance": 0.5
+          "chance": 50
         },
         "power": {
           "chance": 0
@@ -244,7 +244,7 @@
           "chance": 0
         },
         "power": {
-          "chance": 1
+          "chance": 100
         },
         "root": {
           "chance": 0
@@ -275,7 +275,7 @@
           "chance": 0
         },
         "root": {
-          "chance": 1
+          "chance": 100
         }
       },
       "primaryNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],

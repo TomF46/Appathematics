@@ -79,10 +79,11 @@ export const handleSecondaryNumberRemoved = (number, set) => {
 };
 
 export const handleMultiplicationChanceChange = (event, set) => {
+  console.log('Change');
   let { value } = event.target;
   let updatedSet = { ...set };
   if (value > 100) value = 100;
-  updatedSet.operands.multiplication.chance = Number(value / 100);
+  updatedSet.operands.multiplication.chance = Number(value);
   return updatedSet;
 };
 
@@ -90,7 +91,7 @@ export const handleDivisionChanceChange = (event, set) => {
   let { value } = event.target;
   let updatedSet = { ...set };
   if (value > 100) value = 100;
-  updatedSet.operands.division.chance = Number(value / 100);
+  updatedSet.operands.division.chance = Number(value);
   return updatedSet;
 };
 
@@ -98,7 +99,7 @@ export const handleAdditionChanceChange = (event, set) => {
   let { value } = event.target;
   let updatedSet = { ...set };
   if (value > 100) value = 100;
-  updatedSet.operands.addition.chance = Number(value / 100);
+  updatedSet.operands.addition.chance = Number(value);
   return updatedSet;
 };
 
@@ -106,7 +107,7 @@ export const handleSubtractionChanceChange = (event, set) => {
   let { value } = event.target;
   let updatedSet = { ...set };
   if (value > 100) value = 100;
-  updatedSet.operands.subtraction.chance = Number(value / 100);
+  updatedSet.operands.subtraction.chance = Number(value);
   return updatedSet;
 };
 
@@ -114,7 +115,7 @@ export const handlePowerChanceChange = (event, set) => {
   let { value } = event.target;
   let updatedSet = { ...set };
   if (value > 100) value = 100;
-  updatedSet.operands.power.chance = Number(value / 100);
+  updatedSet.operands.power.chance = Number(value);
   return updatedSet;
 };
 
@@ -122,7 +123,7 @@ export const handleRootChanceChange = (event, set) => {
   let { value } = event.target;
   let updatedSet = { ...set };
   if (value > 100) value = 100;
-  updatedSet.operands.root.chance = Number(value / 100);
+  updatedSet.operands.root.chance = Number(value);
   return updatedSet;
 };
 
@@ -210,13 +211,32 @@ export const handleSetDelete = (set) => {
   });
 };
 
-const operandChancesAreValid = (operands) => {
-  let sum =
+const getSumOfOperandChances = (operands) => {
+  return (
     operands.multiplication.chance +
     operands.division.chance +
     operands.addition.chance +
     operands.subtraction.chance +
     operands.power.chance +
-    operands.root.chance;
-  return 1 == sum;
+    operands.root.chance
+  );
+};
+
+const operandChancesAreValid = (operands) => {
+  console.log(getSumOfOperandChances(operands));
+  return getSumOfOperandChances(operands) == 100;
+};
+
+export const isLegacySet = (operands) => {
+  return getSumOfOperandChances(operands) <= 1;
+};
+
+export const updateOperandsFromLegacy = (set) => {
+  set.operands.multiplication.chance = set.operands.multiplication.chance * 100;
+  set.operands.division.chance = set.operands.division.chance * 100;
+  set.operands.addition.chance = set.operands.addition.chance * 100;
+  set.operands.subtraction.chance = set.operands.subtraction.chance * 100;
+  set.operands.power.chance = set.operands.power.chance * 100;
+  set.operands.root.chance = set.operands.root.chance * 100;
+  return set;
 };

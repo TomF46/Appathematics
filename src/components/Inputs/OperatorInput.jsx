@@ -8,6 +8,7 @@ import {
   handlePowerChanceChange,
   handleRootChanceChange,
   handleSubtractionChanceChange,
+  isLegacySet,
 } from '../../services/customSetsService';
 import MultiplyIcon from '../../assets/multiply.svg';
 import DivideIcon from '../../assets/divide.svg';
@@ -19,27 +20,32 @@ function OperatorInput({ set, onOperatorsChanged }) {
   const [operands, setOperarands] = useState(null);
 
   const formatOperators = useCallback(() => {
+    let isLegacy = isLegacySet(set.operands);
     return {
       multiplication: {
-        chance: Math.round(set.operands.multiplication.chance * 100),
+        chance: formatChance(set.operands.multiplication.chance, isLegacy),
       },
       division: {
-        chance: Math.round(set.operands.division.chance * 100),
+        chance: formatChance(set.operands.division.chance, isLegacy),
       },
       addition: {
-        chance: Math.round(set.operands.addition.chance * 100),
+        chance: formatChance(set.operands.addition.chance, isLegacy),
       },
       subtraction: {
-        chance: Math.round(set.operands.subtraction.chance * 100),
+        chance: formatChance(set.operands.subtraction.chance, isLegacy),
       },
       power: {
-        chance: Math.round(set.operands.power.chance * 100),
+        chance: formatChance(set.operands.power.chance, isLegacy),
       },
       root: {
-        chance: Math.round(set.operands.root.chance * 100),
+        chance: formatChance(set.operands.root.chance, isLegacy),
       },
     };
   }, [set]);
+
+  function formatChance(chance, isLegacy) {
+    return isLegacy ? Math.round(chance * 100) : chance;
+  }
 
   useEffect(() => {
     setOperarands(formatOperators());

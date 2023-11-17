@@ -14,6 +14,8 @@ import {
   handleSetCreate,
   handleSetUpdate,
   setIsValid,
+  isLegacySet,
+  updateOperandsFromLegacy,
 } from '../../../services/customSetsService';
 import TextInput from '../../../components/Inputs/TextInput';
 import NumberInput from '../../../components/Inputs/NumberInput';
@@ -40,6 +42,7 @@ function ManageCustomSet() {
 
   async function handleSave(event) {
     event.preventDefault();
+    if (isLegacySet(questionSet.operands)) setQuestionSet(updateOperandsFromLegacy(questionSet));
     if (!setIsValid(questionSet)) return;
     let sets = [];
     if (id) {

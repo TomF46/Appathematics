@@ -139,15 +139,18 @@ class QuestionsService {
     };
   }
 
+  // Legacy support for when custom sets used decimals instead of percentages for chance.
   getMethodUsingOdds(methods) {
+    let isLegacy = methods.every((method) => method.chance <= 1);
     let sum = 0;
     for (let i = 0; i < methods.length; i++) {
       sum += methods[i].chance;
     }
-    const rnd = Math.floor(Math.random() * (sum * 100));
+    if (isLegacy) sum = sum * 100;
+    const rnd = Math.floor(Math.random() * sum);
     let counter = 0;
     for (let i = 0; i < methods.length; i++) {
-      counter += methods[i].chance * 100;
+      counter += isLegacy ? methods[i].chance * 100 : methods[i].chance;
       if (counter > rnd) {
         return methods[i];
       }
